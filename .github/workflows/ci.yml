@@ -69,6 +69,9 @@ jobs:
       - name: Run tests
         run: poetry run pytest --cov=app --cov-report=term-missing -x
 
+      - name: Coverage summary
+        run: poetry run coverage report --format=markdown >> $GITHUB_STEP_SUMMARY
+
   frontend:
     name: Frontend Checks
     runs-on: ubuntu-latest
