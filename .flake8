@@ -1,0 +1,14 @@
+[flake8]
+max-line-length = 120
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    migrations,
+    node_modules
+per-file-ignores =
+    app/models/*.py: F821
+    app/models/__init__.py: F401
+    app/schemas/__init__.py: F401
+    app/scripts/update_pricing.py: E402

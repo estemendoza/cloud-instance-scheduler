@@ -1,0 +1,22 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm ci
+
+# Copy config files (these don't change often)
+COPY svelte.config.js ./
+COPY vite.config.ts ./
+COPY tsconfig.json ./
+COPY tailwind.config.js ./
+COPY postcss.config.js ./
+
+# Source code will be mounted as a volume for hot reload
+# Static files also mounted
+
+EXPOSE 3000
+
+# Run vite dev server (host binding configured in vite.config.ts)
+CMD ["npm", "run", "dev"]

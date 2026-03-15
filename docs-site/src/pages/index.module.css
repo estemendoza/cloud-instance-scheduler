@@ -1,0 +1,150 @@
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  padding: 5rem 0;
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.18), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.2), transparent 26%),
+    linear-gradient(180deg, #f4fbfa 0%, #ffffff 100%);
+}
+
+.kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+.title {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 5.75rem);
+  line-height: 0.95;
+}
+
+.subtitle {
+  max-width: 52rem;
+  margin: 1.5rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Feature grid */
+
+.features {
+  padding: 4rem 0 5rem;
+  background: #f8fbfb;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 1.75rem;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(15, 118, 110, 0.08);
+}
+
+.cardIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 1rem;
+  color: #0f766e;
+}
+
+.cardTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.cardDescription {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+/* Dark mode */
+
+:global([data-theme='dark']) .hero {
+  background:
+    radial-gradient(circle at top left, rgba(45, 212, 191, 0.1), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.12), transparent 26%),
+    linear-gradient(180deg, #091116 0%, #0f172a 100%);
+}
+
+:global([data-theme='dark']) .kicker {
+  color: #2dd4bf;
+}
+
+:global([data-theme='dark']) .subtitle {
+  color: #94a3b8;
+}
+
+:global([data-theme='dark']) .features {
+  background: #0c1520;
+}
+
+:global([data-theme='dark']) .card {
+  background: #0f172a;
+  border-color: rgba(148, 163, 184, 0.12);
+}
+
+:global([data-theme='dark']) .card:hover {
+  box-shadow: 0 4px 16px rgba(45, 212, 191, 0.08);
+}
+
+:global([data-theme='dark']) .cardIcon {
+  color: #2dd4bf;
+}
+
+:global([data-theme='dark']) .cardTitle {
+  color: #e2e8f0;
+}
+
+:global([data-theme='dark']) .cardDescription {
+  color: #94a3b8;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 996px) {
+  .hero {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features {
+    padding: 3rem 0 4rem;
+  }
+}

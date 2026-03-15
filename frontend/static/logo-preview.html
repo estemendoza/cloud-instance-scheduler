@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIS Logo Concepts</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 48px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #f1f5f9;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 48px;
+    }
+    .row-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+      margin-top: 48px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .row-label:first-of-type { margin-top: 0; }
+    .concepts {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+    .concept {
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 28px;
+      background: #0f172a;
+    }
+    .concept h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+    .concept .desc {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .sizes {
+      display: flex;
+      align-items: end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .size-label {
+      font-size: 10px;
+      color: #475569;
+      font-family: monospace;
+    }
+    .context {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #1e293b;
+    }
+    .context-label {
+      font-size: 10px;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .sidebar-mock {
+      width: 200px;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .sidebar-icon-box {
+      width: 32px;
+      height: 32px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .sidebar-text h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1;
+    }
+    .sidebar-text .version {
+      font-size: 9px;
+      color: #64748b;
+      font-family: monospace;
+      margin-top: 2px;
+    }
+    .on-dark {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .on-light {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bg-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .bg-label {
+      font-size: 10px;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>CIS Logo Concepts</h1>
+<p class="subtitle">Cloud Instance Scheduler — comparing nine directions at multiple sizes</p>
+
+<p class="row-label">Round 1</p>
+<div class="concepts">
+
+  <!-- ===================== CONCEPT A: The Pulse ===================== -->
+  <div class="concept">
+    <h2>A — The Pulse</h2>
+    <p class="desc">Power symbol with clock hand. The vertical stroke doubles as a schedule indicator. Captures power state + timing in one mark.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <path d="M7.5 5.2A8.5 8.5 0 1 0 16.5 5.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="12" y1="3" x2="12" y2="11" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12.5" r="1.2" fill="#10b981"/>
+          <line x1="15.5" y1="16" x2="16.8" y2="17" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="8.5" y1="16" x2="7.2" y2="17" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <path d="M7.5 5.2A8.5 8.5 0 1 0 16.5 5.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="12" y1="3" x2="12" y2="11" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12.5" r="1.2" fill="#10b981"/>
+          <line x1="15.5" y1="16" x2="16.8" y2="17" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="8.5" y1="16" x2="7.2" y2="17" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <path d="M7.5 5.2A8.5 8.5 0 1 0 16.5 5.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="12" y1="3" x2="12" y2="11" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12.5" r="1.2" fill="#10b981"/>
+          <line x1="15.5" y1="16" x2="16.8" y2="17" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="8.5" y1="16" x2="7.2" y2="17" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M7.5 5.2A8.5 8.5 0 1 0 16.5 5.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="12" y1="3" x2="12" y2="11" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12.5" r="1.2" fill="#10b981"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M7.5 5.2A8.5 8.5 0 1 0 16.5 5.2" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+          <line x1="12" y1="3" x2="12" y2="11" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="12" cy="12.5" r="1.4" fill="#10b981"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M7.5 5.2A8.5 8.5 0 1 0 16.5 5.2" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="12" y1="3" x2="12" y2="11" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="12" cy="12.5" r="1.4" fill="#10b981"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M7.5 5.2A8.5 8.5 0 1 0 16.5 5.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="3" x2="12" y2="11" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12.5" r="1.2" fill="#10b981"/><line x1="15.5" y1="16" x2="16.8" y2="17" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.4"/><line x1="8.5" y1="16" x2="7.2" y2="17" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.4"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M7.5 5.2A8.5 8.5 0 1 0 16.5 5.2" stroke="#059669" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="3" x2="12" y2="11" stroke="#059669" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12.5" r="1.2" fill="#059669"/><line x1="15.5" y1="16" x2="16.8" y2="17" stroke="#059669" stroke-width="1" stroke-linecap="round" opacity="0.4"/><line x1="8.5" y1="16" x2="7.2" y2="17" stroke="#059669" stroke-width="1" stroke-linecap="round" opacity="0.4"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONCEPT B: The Bracket ===================== -->
+  <div class="concept">
+    <h2>B — The Bracket</h2>
+    <p class="desc">Abstract C shape wrapping a glowing instance dot. The open bracket suggests the on/off cycle, the dot is the managed instance.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <path d="M16 5.5C14.8 4.6 13.5 4 12 4 7.6 4 4 7.6 4 12s3.6 8 8 8c1.5 0 2.8-.4 4-1.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="10" y="10" width="4" height="4" rx="0.8" fill="#10b981" opacity="0.9"/>
+          <path d="M17 8.5a5.5 5.5 0 0 1 0 7" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2.5"/>
+          <path d="M16.2 15.8l0.8-0.3 0.3 0.8" stroke="#10b981" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <path d="M16 5.5C14.8 4.6 13.5 4 12 4 7.6 4 4 7.6 4 12s3.6 8 8 8c1.5 0 2.8-.4 4-1.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="10" y="10" width="4" height="4" rx="0.8" fill="#10b981" opacity="0.9"/>
+          <path d="M17 8.5a5.5 5.5 0 0 1 0 7" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2.5"/>
+          <path d="M16.2 15.8l0.8-0.3 0.3 0.8" stroke="#10b981" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <path d="M16 5.5C14.8 4.6 13.5 4 12 4 7.6 4 4 7.6 4 12s3.6 8 8 8c1.5 0 2.8-.4 4-1.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="10" y="10" width="4" height="4" rx="0.8" fill="#10b981" opacity="0.9"/>
+          <path d="M17 8.5a5.5 5.5 0 0 1 0 7" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2.5"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M16 5.5C14.8 4.6 13.5 4 12 4 7.6 4 4 7.6 4 12s3.6 8 8 8c1.5 0 2.8-.4 4-1.2" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+          <rect x="9.5" y="9.5" width="5" height="5" rx="1" fill="#10b981" opacity="0.9"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M16 5.5C14.8 4.6 13.5 4 12 4 7.6 4 4 7.6 4 12s3.6 8 8 8c1.5 0 2.8-.4 4-1.2" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="9.5" y="9.5" width="5" height="5" rx="1" fill="#10b981" opacity="0.9"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M16 5.5C14.8 4.6 13.5 4 12 4 7.6 4 4 7.6 4 12s3.6 8 8 8c1.5 0 2.8-.4 4-1.2" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+              <rect x="9.5" y="9.5" width="5" height="5" rx="1" fill="#10b981" opacity="0.9"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M16 5.5C14.8 4.6 13.5 4 12 4 7.6 4 4 7.6 4 12s3.6 8 8 8c1.5 0 2.8-.4 4-1.2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/><rect x="10" y="10" width="4" height="4" rx="0.8" fill="#10b981" opacity="0.9"/><path d="M17 8.5a5.5 5.5 0 0 1 0 7" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2.5"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M16 5.5C14.8 4.6 13.5 4 12 4 7.6 4 4 7.6 4 12s3.6 8 8 8c1.5 0 2.8-.4 4-1.2" stroke="#059669" stroke-width="1.8" stroke-linecap="round"/><rect x="10" y="10" width="4" height="4" rx="0.8" fill="#059669" opacity="0.9"/><path d="M17 8.5a5.5 5.5 0 0 1 0 7" stroke="#059669" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2.5"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONCEPT C: The Toggle Clock ===================== -->
+  <div class="concept">
+    <h2>C — The Toggle Clock</h2>
+    <p class="desc">Two stacked bars forming a timeline/Gantt view. Top bar is "on" (longer), bottom is "off" (shorter). Pure geometry, reads as scheduling infrastructure.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.25"/>
+          <rect x="5" y="9" width="11" height="2.5" rx="1.25" fill="#10b981"/>
+          <rect x="5" y="12.5" width="6" height="2.5" rx="1.25" fill="#10b981" opacity="0.4"/>
+          <line x1="12" y1="12" x2="17.5" y2="8" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="12" cy="12" r="1" fill="#10b981" opacity="0.6"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.25"/>
+          <rect x="5" y="9" width="11" height="2.5" rx="1.25" fill="#10b981"/>
+          <rect x="5" y="12.5" width="6" height="2.5" rx="1.25" fill="#10b981" opacity="0.4"/>
+          <line x1="12" y1="12" x2="17.5" y2="8" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="12" cy="12" r="1" fill="#10b981" opacity="0.6"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.25"/>
+          <rect x="5" y="9" width="11" height="2.5" rx="1.25" fill="#10b981"/>
+          <rect x="5" y="12.5" width="6" height="2.5" rx="1.25" fill="#10b981" opacity="0.4"/>
+          <line x1="12" y1="12" x2="17.5" y2="8" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.8" opacity="0.2"/>
+          <rect x="5" y="8.5" width="12" height="3" rx="1.5" fill="#10b981"/>
+          <rect x="5" y="12.5" width="7" height="3" rx="1.5" fill="#10b981" opacity="0.4"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="2" opacity="0.2"/>
+          <rect x="5" y="8.5" width="12" height="3" rx="1.5" fill="#10b981"/>
+          <rect x="5" y="12.5" width="7" height="3" rx="1.5" fill="#10b981" opacity="0.4"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="2" opacity="0.2"/>
+              <rect x="5" y="8.5" width="12" height="3" rx="1.5" fill="#10b981"/>
+              <rect x="5" y="12.5" width="7" height="3" rx="1.5" fill="#10b981" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.25"/><rect x="5" y="9" width="11" height="2.5" rx="1.25" fill="#10b981"/><rect x="5" y="12.5" width="6" height="2.5" rx="1.25" fill="#10b981" opacity="0.4"/><line x1="12" y1="12" x2="17.5" y2="8" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#059669" stroke-width="1.5" opacity="0.25"/><rect x="5" y="9" width="11" height="2.5" rx="1.25" fill="#059669"/><rect x="5" y="12.5" width="6" height="2.5" rx="1.25" fill="#059669" opacity="0.4"/><line x1="12" y1="12" x2="17.5" y2="8" stroke="#059669" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========================== ROUND 2 ========================== -->
+<p class="row-label">Round 2</p>
+<div class="concepts">
+
+  <!-- ===================== CONCEPT D: The Signal ===================== -->
+  <div class="concept">
+    <h2>D — The Signal</h2>
+    <p class="desc">A digital square wave showing high/low states — literally what CIS does. The waveform reads as "toggling instances on and off over time." Technical, precise, unique.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <!-- Square wave: high=running, low=stopped -->
+          <path d="M3 15 L3 8 L8 8 L8 15 L13 15 L13 8 L18 8 L18 15 L21 15" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Subtle baseline -->
+          <line x1="2" y1="18" x2="22" y2="18" stroke="#10b981" stroke-width="0.5" opacity="0.15"/>
+          <!-- Time tick marks -->
+          <line x1="8" y1="17.5" x2="8" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+          <line x1="13" y1="17.5" x2="13" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+          <line x1="18" y1="17.5" x2="18" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <path d="M3 15 L3 8 L8 8 L8 15 L13 15 L13 8 L18 8 L18 15 L21 15" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="2" y1="18" x2="22" y2="18" stroke="#10b981" stroke-width="0.5" opacity="0.15"/>
+          <line x1="8" y1="17.5" x2="8" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+          <line x1="13" y1="17.5" x2="13" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+          <line x1="18" y1="17.5" x2="18" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <path d="M3 15 L3 8 L8 8 L8 15 L13 15 L13 8 L18 8 L18 15 L21 15" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="8" y1="17.5" x2="8" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+          <line x1="13" y1="17.5" x2="13" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+          <line x1="18" y1="17.5" x2="18" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M3 15 L3 8 L8 8 L8 15 L13 15 L13 8 L18 8 L18 15 L21 15" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M3 15 L3 8 L8 8 L8 15 L13 15 L13 8 L18 8 L18 15 L21 15" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M3 15 L3 8 L8 8 L8 15 L13 15 L13 8 L18 8 L18 15 L21 15" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M3 15 L3 8 L8 8 L8 15 L13 15 L13 8 L18 8 L18 15 L21 15" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="17.5" x2="8" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/><line x1="13" y1="17.5" x2="13" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/><line x1="18" y1="17.5" x2="18" y2="18.5" stroke="#10b981" stroke-width="0.8" opacity="0.3"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M3 15 L3 8 L8 8 L8 15 L13 15 L13 8 L18 8 L18 15 L21 15" stroke="#059669" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="17.5" x2="8" y2="18.5" stroke="#059669" stroke-width="0.8" opacity="0.3"/><line x1="13" y1="17.5" x2="13" y2="18.5" stroke="#059669" stroke-width="0.8" opacity="0.3"/><line x1="18" y1="17.5" x2="18" y2="18.5" stroke="#059669" stroke-width="0.8" opacity="0.3"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONCEPT E: The Dial ===================== -->
+  <div class="concept">
+    <h2>E — The Dial</h2>
+    <p class="desc">A clock face with an emerald arc showing the "uptime window." The filled segment is when instances run. The gap is when they stop. Schedule as a radial gauge.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <!-- Full circle track (dim) -->
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.15"/>
+          <!-- Active arc: ~9 o'clock to ~5 o'clock (the "on" window) -->
+          <path d="M3.5 14.5 A9 9 0 1 1 16.5 19.5" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- Small instance dot at center -->
+          <circle cx="12" cy="12" r="2" fill="#10b981" opacity="0.8"/>
+          <!-- Clock hand pointing to current position on the arc -->
+          <line x1="12" y1="12" x2="8" y2="5.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.15"/>
+          <path d="M3.5 14.5 A9 9 0 1 1 16.5 19.5" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="12" cy="12" r="2" fill="#10b981" opacity="0.8"/>
+          <line x1="12" y1="12" x2="8" y2="5.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.15"/>
+          <path d="M3.5 14.5 A9 9 0 1 1 16.5 19.5" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="12" cy="12" r="2" fill="#10b981" opacity="0.8"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.8" opacity="0.15"/>
+          <path d="M3.5 14.5 A9 9 0 1 1 16.5 19.5" stroke="#10b981" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="12" cy="12" r="2.2" fill="#10b981" opacity="0.8"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="2" opacity="0.15"/>
+          <path d="M3.5 14.5 A9 9 0 1 1 16.5 19.5" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <circle cx="12" cy="12" r="2.5" fill="#10b981" opacity="0.8"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="2" opacity="0.15"/>
+              <path d="M3.5 14.5 A9 9 0 1 1 16.5 19.5" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <circle cx="12" cy="12" r="2.5" fill="#10b981" opacity="0.8"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.15"/><path d="M3.5 14.5 A9 9 0 1 1 16.5 19.5" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="2" fill="#10b981" opacity="0.8"/><line x1="12" y1="12" x2="8" y2="5.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#059669" stroke-width="1.5" opacity="0.15"/><path d="M3.5 14.5 A9 9 0 1 1 16.5 19.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="2" fill="#059669" opacity="0.8"/><line x1="12" y1="12" x2="8" y2="5.5" stroke="#059669" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONCEPT F: The Grid ===================== -->
+  <div class="concept">
+    <h2>F — The Grid</h2>
+    <p class="desc">A 2x2 grid of instance nodes — some lit (running), some dim (stopped). A diagonal schedule line sweeps across, defining which are on and which are off. Fleet management at a glance.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <!-- Outer rounded square -->
+          <rect x="3" y="3" width="18" height="18" rx="3" stroke="#10b981" stroke-width="1.2" opacity="0.2"/>
+          <!-- Top-left: ON -->
+          <rect x="5.5" y="5.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <!-- Top-right: ON -->
+          <rect x="13.5" y="5.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <!-- Bottom-left: ON -->
+          <rect x="5.5" y="13.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <!-- Bottom-right: OFF -->
+          <rect x="13.5" y="13.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.2"/>
+          <!-- Diagonal schedule line -->
+          <line x1="4" y1="20" x2="20" y2="4" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="18" rx="3" stroke="#10b981" stroke-width="1.2" opacity="0.2"/>
+          <rect x="5.5" y="5.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="13.5" y="5.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="5.5" y="13.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="13.5" y="13.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.2"/>
+          <line x1="4" y1="20" x2="20" y2="4" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="18" rx="3" stroke="#10b981" stroke-width="1.2" opacity="0.2"/>
+          <rect x="5.5" y="5.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="13.5" y="5.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="5.5" y="13.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="13.5" y="13.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.2"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="18" rx="3" stroke="#10b981" stroke-width="1.5" opacity="0.2"/>
+          <rect x="5" y="5" width="5.5" height="5.5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="13.5" y="5" width="5.5" height="5.5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="5" y="13.5" width="5.5" height="5.5" rx="1.2" fill="#10b981" opacity="0.9"/>
+          <rect x="13.5" y="13.5" width="5.5" height="5.5" rx="1.2" fill="#10b981" opacity="0.2"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="18" rx="3" stroke="#10b981" stroke-width="2" opacity="0.2"/>
+          <rect x="5" y="5" width="5.5" height="5.5" rx="1.5" fill="#10b981" opacity="0.9"/>
+          <rect x="13.5" y="5" width="5.5" height="5.5" rx="1.5" fill="#10b981" opacity="0.9"/>
+          <rect x="5" y="13.5" width="5.5" height="5.5" rx="1.5" fill="#10b981" opacity="0.9"/>
+          <rect x="13.5" y="13.5" width="5.5" height="5.5" rx="1.5" fill="#10b981" opacity="0.2"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke="#10b981" stroke-width="2" opacity="0.2"/>
+              <rect x="5" y="5" width="5.5" height="5.5" rx="1.5" fill="#10b981" opacity="0.9"/>
+              <rect x="13.5" y="5" width="5.5" height="5.5" rx="1.5" fill="#10b981" opacity="0.9"/>
+              <rect x="5" y="13.5" width="5.5" height="5.5" rx="1.5" fill="#10b981" opacity="0.9"/>
+              <rect x="13.5" y="13.5" width="5.5" height="5.5" rx="1.5" fill="#10b981" opacity="0.2"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#10b981" stroke-width="1.2" opacity="0.2"/><rect x="5.5" y="5.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/><rect x="13.5" y="5.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/><rect x="5.5" y="13.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.9"/><rect x="13.5" y="13.5" width="5" height="5" rx="1.2" fill="#10b981" opacity="0.2"/><line x1="4" y1="20" x2="20" y2="4" stroke="#10b981" stroke-width="1" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#059669" stroke-width="1.2" opacity="0.2"/><rect x="5.5" y="5.5" width="5" height="5" rx="1.2" fill="#059669" opacity="0.9"/><rect x="13.5" y="5.5" width="5" height="5" rx="1.2" fill="#059669" opacity="0.9"/><rect x="5.5" y="13.5" width="5" height="5" rx="1.2" fill="#059669" opacity="0.9"/><rect x="13.5" y="13.5" width="5" height="5" rx="1.2" fill="#059669" opacity="0.2"/><line x1="4" y1="20" x2="20" y2="4" stroke="#059669" stroke-width="1" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========================== ROUND 3 ========================== -->
+<p class="row-label">Round 3</p>
+<div class="concepts">
+
+  <!-- ===================== CONCEPT G: The Cloud Timer ===================== -->
+  <div class="concept">
+    <h2>G — The Cloud Timer</h2>
+    <p class="desc">A minimal cloud silhouette with a clock hand inside. The most literal reading — cloud + schedule — but stripped to pure geometry. The cloud is two arcs, not a cartoon shape.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <!-- Minimal cloud: two overlapping arcs -->
+          <path d="M6.5 17C4 17 2 15.2 2 13c0-2 1.5-3.6 3.5-4C6 6.5 8.5 4.5 11.5 4.5c2.5 0 4.6 1.4 5.5 3.5 2.2.3 4 2 4 4.2 0 2.4-2 4.3-4.5 4.3" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <!-- Clock hand from center of cloud -->
+          <circle cx="12" cy="12" r="1" fill="#10b981" opacity="0.7"/>
+          <line x1="12" y1="12" x2="12" y2="8" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="12" y1="12" x2="15" y2="12" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <!-- Subtle tick marks -->
+          <line x1="12" y1="6" x2="12" y2="6.8" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+          <line x1="16.5" y1="12" x2="15.8" y2="12" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+          <line x1="7.5" y1="12" x2="8.2" y2="12" stroke="#10b981" stroke-width="0.8" opacity="0.3"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <path d="M6.5 17C4 17 2 15.2 2 13c0-2 1.5-3.6 3.5-4C6 6.5 8.5 4.5 11.5 4.5c2.5 0 4.6 1.4 5.5 3.5 2.2.3 4 2 4 4.2 0 2.4-2 4.3-4.5 4.3" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <circle cx="12" cy="12" r="1" fill="#10b981" opacity="0.7"/>
+          <line x1="12" y1="12" x2="12" y2="8" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="12" y1="12" x2="15" y2="12" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <path d="M6.5 17C4 17 2 15.2 2 13c0-2 1.5-3.6 3.5-4C6 6.5 8.5 4.5 11.5 4.5c2.5 0 4.6 1.4 5.5 3.5 2.2.3 4 2 4 4.2 0 2.4-2 4.3-4.5 4.3" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <circle cx="12" cy="12" r="1" fill="#10b981" opacity="0.7"/>
+          <line x1="12" y1="12" x2="12" y2="8" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="12" y1="12" x2="15" y2="12" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M6.5 17C4 17 2 15.2 2 13c0-2 1.5-3.6 3.5-4C6 6.5 8.5 4.5 11.5 4.5c2.5 0 4.6 1.4 5.5 3.5 2.2.3 4 2 4 4.2 0 2.4-2 4.3-4.5 4.3" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <circle cx="12" cy="12" r="1.2" fill="#10b981" opacity="0.7"/>
+          <line x1="12" y1="12" x2="12" y2="8" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="12" y1="12" x2="15" y2="12" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M6.5 17C4 17 2 15.2 2 13c0-2 1.5-3.6 3.5-4C6 6.5 8.5 4.5 11.5 4.5c2.5 0 4.6 1.4 5.5 3.5 2.2.3 4 2 4 4.2 0 2.4-2 4.3-4.5 4.3" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <circle cx="12" cy="12" r="1.5" fill="#10b981"/>
+          <line x1="12" y1="12" x2="12" y2="8.5" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M6.5 17C4 17 2 15.2 2 13c0-2 1.5-3.6 3.5-4C6 6.5 8.5 4.5 11.5 4.5c2.5 0 4.6 1.4 5.5 3.5 2.2.3 4 2 4 4.2 0 2.4-2 4.3-4.5 4.3" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <circle cx="12" cy="12" r="1.5" fill="#10b981"/>
+              <line x1="12" y1="12" x2="12" y2="8.5" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M6.5 17C4 17 2 15.2 2 13c0-2 1.5-3.6 3.5-4C6 6.5 8.5 4.5 11.5 4.5c2.5 0 4.6 1.4 5.5 3.5 2.2.3 4 2 4 4.2 0 2.4-2 4.3-4.5 4.3" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="1" fill="#10b981" opacity="0.7"/><line x1="12" y1="12" x2="12" y2="8" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="12" x2="15" y2="12" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M6.5 17C4 17 2 15.2 2 13c0-2 1.5-3.6 3.5-4C6 6.5 8.5 4.5 11.5 4.5c2.5 0 4.6 1.4 5.5 3.5 2.2.3 4 2 4 4.2 0 2.4-2 4.3-4.5 4.3" stroke="#059669" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="1" fill="#059669" opacity="0.7"/><line x1="12" y1="12" x2="12" y2="8" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="12" x2="15" y2="12" stroke="#059669" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONCEPT H: The Flip ===================== -->
+  <div class="concept">
+    <h2>H — The Flip</h2>
+    <p class="desc">A toggle switch fused with a timer arc. The pill shape says on/off, the arc wrapping it says "on a schedule." The knob sits on the active side. Compact, immediately readable.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <!-- Toggle pill track -->
+          <rect x="4" y="8" width="16" height="8" rx="4" stroke="#10b981" stroke-width="1.3" fill="#10b981" fill-opacity="0.12"/>
+          <!-- Active knob (right = ON) -->
+          <circle cx="16" cy="12" r="2.8" fill="#10b981"/>
+          <!-- Schedule arc wrapping the toggle -->
+          <path d="M5 6.5 A8 8 0 0 1 19 6.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+          <path d="M19 17.5 A8 8 0 0 1 5 17.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2.5"/>
+          <!-- Tiny clock ticks on the arc -->
+          <circle cx="5" cy="6.5" r="0.8" fill="#10b981" opacity="0.4"/>
+          <circle cx="12" cy="5" r="0.8" fill="#10b981" opacity="0.4"/>
+          <circle cx="19" cy="6.5" r="0.8" fill="#10b981" opacity="0.4"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="8" width="16" height="8" rx="4" stroke="#10b981" stroke-width="1.3" fill="#10b981" fill-opacity="0.12"/>
+          <circle cx="16" cy="12" r="2.8" fill="#10b981"/>
+          <path d="M5 6.5 A8 8 0 0 1 19 6.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+          <path d="M19 17.5 A8 8 0 0 1 5 17.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2.5"/>
+          <circle cx="5" cy="6.5" r="0.8" fill="#10b981" opacity="0.4"/>
+          <circle cx="12" cy="5" r="0.8" fill="#10b981" opacity="0.4"/>
+          <circle cx="19" cy="6.5" r="0.8" fill="#10b981" opacity="0.4"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="8" width="16" height="8" rx="4" stroke="#10b981" stroke-width="1.3" fill="#10b981" fill-opacity="0.12"/>
+          <circle cx="16" cy="12" r="2.8" fill="#10b981"/>
+          <path d="M5 6.5 A8 8 0 0 1 19 6.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+          <path d="M19 17.5 A8 8 0 0 1 5 17.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2.5"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="8" width="16" height="8" rx="4" stroke="#10b981" stroke-width="1.5" fill="#10b981" fill-opacity="0.12"/>
+          <circle cx="16" cy="12" r="3" fill="#10b981"/>
+          <path d="M5 6 A8.5 8.5 0 0 1 19 6" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+          <path d="M19 18 A8.5 8.5 0 0 1 5 18" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2.5"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="8" width="16" height="8" rx="4" stroke="#10b981" stroke-width="2" fill="#10b981" fill-opacity="0.12"/>
+          <circle cx="16" cy="12" r="3" fill="#10b981"/>
+          <path d="M5 5.5 A9 9 0 0 1 19 5.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="8" width="16" height="8" rx="4" stroke="#10b981" stroke-width="2" fill="#10b981" fill-opacity="0.12"/>
+              <circle cx="16" cy="12" r="3" fill="#10b981"/>
+              <path d="M5 5.5 A9 9 0 0 1 19 5.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="8" rx="4" stroke="#10b981" stroke-width="1.3" fill="#10b981" fill-opacity="0.12"/><circle cx="16" cy="12" r="2.8" fill="#10b981"/><path d="M5 6.5 A8 8 0 0 1 19 6.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/><path d="M19 17.5 A8 8 0 0 1 5 17.5" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2.5"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="8" rx="4" stroke="#059669" stroke-width="1.3" fill="#059669" fill-opacity="0.12"/><circle cx="16" cy="12" r="2.8" fill="#059669"/><path d="M5 6.5 A8 8 0 0 1 19 6.5" stroke="#059669" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/><path d="M19 17.5 A8 8 0 0 1 5 17.5" stroke="#059669" stroke-width="1.2" stroke-linecap="round" opacity="0.35" stroke-dasharray="2 2.5"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONCEPT I: The Orbit ===================== -->
+  <div class="concept">
+    <h2>I — The Orbit</h2>
+    <p class="desc">A central scheduler hub with instance dots orbiting in an elliptical path. Some dots are lit (running), one is dim (stopped). Conveys automation managing a fleet on a cycle.</p>
+    <div class="sizes">
+      <div class="size-item">
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none">
+          <!-- Central hub -->
+          <circle cx="12" cy="12" r="2.5" fill="#10b981" opacity="0.8"/>
+          <!-- Inner glow ring -->
+          <circle cx="12" cy="12" r="3.5" stroke="#10b981" stroke-width="0.8" opacity="0.2"/>
+          <!-- Orbit path -->
+          <ellipse cx="12" cy="12" rx="8" ry="5" stroke="#10b981" stroke-width="1" opacity="0.2" transform="rotate(-20 12 12)"/>
+          <!-- Instance dots on orbit -->
+          <!-- Running (bright) -->
+          <circle cx="4.5" cy="10" r="1.5" fill="#10b981" opacity="0.9"/>
+          <circle cx="18" cy="8.5" r="1.5" fill="#10b981" opacity="0.9"/>
+          <circle cx="16.5" cy="16" r="1.5" fill="#10b981" opacity="0.9"/>
+          <!-- Stopped (dim) -->
+          <circle cx="7" cy="15.5" r="1.5" fill="#10b981" opacity="0.2"/>
+        </svg>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="2.5" fill="#10b981" opacity="0.8"/>
+          <circle cx="12" cy="12" r="3.5" stroke="#10b981" stroke-width="0.8" opacity="0.2"/>
+          <ellipse cx="12" cy="12" rx="8" ry="5" stroke="#10b981" stroke-width="1" opacity="0.2" transform="rotate(-20 12 12)"/>
+          <circle cx="4.5" cy="10" r="1.5" fill="#10b981" opacity="0.9"/>
+          <circle cx="18" cy="8.5" r="1.5" fill="#10b981" opacity="0.9"/>
+          <circle cx="16.5" cy="16" r="1.5" fill="#10b981" opacity="0.9"/>
+          <circle cx="7" cy="15.5" r="1.5" fill="#10b981" opacity="0.2"/>
+        </svg>
+        <span class="size-label">64px</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="2.5" fill="#10b981" opacity="0.8"/>
+          <ellipse cx="12" cy="12" rx="8" ry="5" stroke="#10b981" stroke-width="1.2" opacity="0.2" transform="rotate(-20 12 12)"/>
+          <circle cx="4.5" cy="10" r="1.5" fill="#10b981" opacity="0.9"/>
+          <circle cx="18" cy="8.5" r="1.5" fill="#10b981" opacity="0.9"/>
+          <circle cx="16.5" cy="16" r="1.5" fill="#10b981" opacity="0.9"/>
+          <circle cx="7" cy="15.5" r="1.5" fill="#10b981" opacity="0.2"/>
+        </svg>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="2.8" fill="#10b981" opacity="0.8"/>
+          <ellipse cx="12" cy="12" rx="8" ry="5" stroke="#10b981" stroke-width="1.5" opacity="0.2" transform="rotate(-20 12 12)"/>
+          <circle cx="4.5" cy="10" r="1.8" fill="#10b981" opacity="0.9"/>
+          <circle cx="18" cy="8.5" r="1.8" fill="#10b981" opacity="0.9"/>
+          <circle cx="16.5" cy="16" r="1.8" fill="#10b981" opacity="0.9"/>
+          <circle cx="7" cy="15.5" r="1.8" fill="#10b981" opacity="0.2"/>
+        </svg>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3.2" fill="#10b981" opacity="0.8"/>
+          <ellipse cx="12" cy="12" rx="8" ry="5" stroke="#10b981" stroke-width="2" opacity="0.2" transform="rotate(-20 12 12)"/>
+          <circle cx="4.5" cy="10" r="2" fill="#10b981" opacity="0.9"/>
+          <circle cx="18" cy="8.5" r="2" fill="#10b981" opacity="0.9"/>
+          <circle cx="16.5" cy="16" r="2" fill="#10b981" opacity="0.9"/>
+        </svg>
+        <span class="size-label">16px</span>
+      </div>
+    </div>
+    <div class="context">
+      <p class="context-label">In sidebar</p>
+      <div class="sidebar-mock">
+        <div class="sidebar-header">
+          <div class="sidebar-icon-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="3.2" fill="#10b981" opacity="0.8"/>
+              <ellipse cx="12" cy="12" rx="8" ry="5" stroke="#10b981" stroke-width="2" opacity="0.2" transform="rotate(-20 12 12)"/>
+              <circle cx="4.5" cy="10" r="2" fill="#10b981" opacity="0.9"/>
+              <circle cx="18" cy="8.5" r="2" fill="#10b981" opacity="0.9"/>
+              <circle cx="16.5" cy="16" r="2" fill="#10b981" opacity="0.9"/>
+            </svg>
+          </div>
+          <div class="sidebar-text"><h3>CIS</h3><span class="version">v0.1.0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="context" style="margin-top: 16px">
+      <p class="context-label">On backgrounds</p>
+      <div class="bg-row">
+        <div><p class="bg-label">Dark</p><div class="on-dark"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" fill="#10b981" opacity="0.8"/><ellipse cx="12" cy="12" rx="8" ry="5" stroke="#10b981" stroke-width="1.2" opacity="0.2" transform="rotate(-20 12 12)"/><circle cx="4.5" cy="10" r="1.5" fill="#10b981" opacity="0.9"/><circle cx="18" cy="8.5" r="1.5" fill="#10b981" opacity="0.9"/><circle cx="16.5" cy="16" r="1.5" fill="#10b981" opacity="0.9"/><circle cx="7" cy="15.5" r="1.5" fill="#10b981" opacity="0.2"/></svg></div></div>
+        <div><p class="bg-label">Light</p><div class="on-light"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" fill="#059669" opacity="0.8"/><ellipse cx="12" cy="12" rx="8" ry="5" stroke="#059669" stroke-width="1.2" opacity="0.2" transform="rotate(-20 12 12)"/><circle cx="4.5" cy="10" r="1.5" fill="#059669" opacity="0.9"/><circle cx="18" cy="8.5" r="1.5" fill="#059669" opacity="0.9"/><circle cx="16.5" cy="16" r="1.5" fill="#059669" opacity="0.9"/><circle cx="7" cy="15.5" r="1.5" fill="#059669" opacity="0.2"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

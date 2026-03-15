@@ -1,0 +1,21 @@
+# Version control
+.git
+.gitignore
+
+# Development & testing
+tests/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Artifacts
+Archive.zip
