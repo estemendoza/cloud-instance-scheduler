@@ -6,7 +6,7 @@ const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'cis';
 const organizationName = process.env.GITHUB_REPOSITORY_OWNER ?? 'example';
 const siteUrl = process.env.DOCS_URL ?? `https://${organizationName}.github.io`;
 const baseUrl = process.env.DOCS_BASE_URL ?? `/${repoName}/`;
-const apiDocsUrl = process.env.API_DOCS_URL ?? 'http://localhost:8000/api/v1/docs';
+const apiDocsUrl = process.env.API_DOCS_URL || '';
 
 const config: Config = {
   title: 'Cloud Instance Scheduler',
@@ -86,10 +86,7 @@ const config: Config = {
               label: 'Repository',
               href: `https://github.com/${organizationName}/${repoName}`,
             },
-            {
-              label: 'API Docs',
-              href: apiDocsUrl,
-            },
+            ...(apiDocsUrl ? [{ label: 'API Docs', href: apiDocsUrl }] : []),
           ],
         },
       ],
