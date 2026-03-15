@@ -155,7 +155,7 @@
 
   function toggleDay(day: string) {
     if (schedule[day as keyof WeeklySchedule]) {
-      const { [day]: _, ...rest } = schedule;
+      const { [day as keyof WeeklySchedule]: _, ...rest } = schedule;
       schedule = rest as WeeklySchedule;
     } else {
       schedule = { ...schedule, [day]: [{ start: '09:00', end: '18:00' }] };

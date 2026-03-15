@@ -37,7 +37,7 @@
   let loadingMore = false;
   let totalExecutions = 0;
 
-  $: resourceId = $page.params.id;
+  $: resourceId = $page.params.id as string;
 
   onMount(async () => {
     await loadResourceData();

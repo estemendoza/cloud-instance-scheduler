@@ -26,7 +26,7 @@
   let saving = false;
   let error = '';
 
-  $: policyId = $page.params.id;
+  $: policyId = $page.params.id as string;
   $: isAdmin = $authStore.user?.role === 'admin';
 
   onMount(async () => {

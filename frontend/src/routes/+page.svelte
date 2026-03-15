@@ -230,14 +230,14 @@
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
           <div class="flex items-center justify-between mb-2">
             <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Success Rate (24h)</span>
-            <svg class="w-4 h-4 {summary && summary.last_24_hours.success_rate >= 0.95 ? 'text-emerald-500' : summary?.last_24_hours.success_rate >= 0.8 ? 'text-amber-500' : 'text-red-500'}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-4 h-4 {summary && (summary.last_24_hours.success_rate ?? 0) >= 0.95 ? 'text-emerald-500' : (summary?.last_24_hours.success_rate ?? 0) >= 0.8 ? 'text-amber-500' : 'text-red-500'}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
           {#if loading}
             <div class="h-8 bg-slate-700 rounded animate-pulse mb-1"></div>
           {:else}
-            <div class="text-2xl font-semibold font-mono {summary && summary.last_24_hours.success_rate >= 0.95 ? 'text-emerald-400' : summary?.last_24_hours.success_rate >= 0.8 ? 'text-amber-400' : 'text-red-400'}">
+            <div class="text-2xl font-semibold font-mono {summary && (summary.last_24_hours.success_rate ?? 0) >= 0.95 ? 'text-emerald-400' : (summary?.last_24_hours.success_rate ?? 0) >= 0.8 ? 'text-amber-400' : 'text-red-400'}">
               {summary ? formatPercent(summary.last_24_hours.success_rate) : '—'}
             </div>
           {/if}

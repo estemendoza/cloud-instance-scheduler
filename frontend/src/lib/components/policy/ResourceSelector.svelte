@@ -214,7 +214,7 @@
               <div class="flex-1 min-w-0">
                 <div class="text-sm text-slate-200 truncate">{resource.name}</div>
                 <div class="text-xs text-slate-500">
-                  {resource.provider} · {resource.region}
+                  {resource.provider_type} · {resource.region}
                   {#if resource.state}
                     · <span class={resource.state === 'RUNNING' ? 'text-emerald-500' : 'text-slate-400'}>{resource.state}</span>
                   {/if}
