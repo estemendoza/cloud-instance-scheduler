@@ -68,7 +68,7 @@
     return `${(rate * 100).toFixed(1)}%`;
   }
 
-  $: hasNoData = cloudAccounts.length === 0 && resources.length === 0 && policies.length === 0;
+  $: hasNoData = !stepAccount || !stepResources || !stepPolicies;
   $: stepAccount = cloudAccounts.length > 0;
   $: stepResources = resources.length > 0;
   $: stepPolicies = policies.length > 0;

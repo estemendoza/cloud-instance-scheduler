@@ -17,6 +17,10 @@
   let mfaCode = '';
   let showMfaStep = false;
 
+  function onMfaCodeInput(e: Event) {
+    mfaCode = (e.target as HTMLInputElement).value.replace(/\D/g, '').slice(0, 6);
+  }
+
   function isMfaRequired(response: TokenResponse | MfaRequiredResponse): response is MfaRequiredResponse {
     return 'mfa_required' in response && response.mfa_required;
   }
@@ -117,10 +121,11 @@
                 id="mfaCode"
                 type="text"
                 bind:value={mfaCode}
+                on:input={onMfaCodeInput}
                 placeholder="000000"
                 required
                 maxlength="6"
-                pattern="[0-9]{6}"
+
                 inputmode="numeric"
                 autocomplete="one-time-code"
                 disabled={loading}

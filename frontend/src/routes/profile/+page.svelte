@@ -58,6 +58,9 @@
   let mfaDisablePassword = '';
   let mfaDisableCode = '';
   let showDisableForm = false;
+
+  $: mfaVerifyCode = mfaVerifyCode.replace(/\D/g, '').slice(0, 6);
+  $: mfaDisableCode = mfaDisableCode.replace(/\D/g, '').slice(0, 6);
   let secretCopied = false;
 
   // API Keys state
@@ -469,7 +472,7 @@
                     bind:value={mfaDisableCode}
                     required
                     maxlength="6"
-                    pattern="[0-9]{6}"
+
                     placeholder="000000"
                     inputmode="numeric"
                     autocomplete="one-time-code"
@@ -548,7 +551,7 @@
                     bind:value={mfaVerifyCode}
                     required
                     maxlength="6"
-                    pattern="[0-9]{6}"
+
                     placeholder="000000"
                     inputmode="numeric"
                     autocomplete="one-time-code"
