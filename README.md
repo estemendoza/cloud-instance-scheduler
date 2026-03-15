@@ -7,6 +7,7 @@
 [![CI](https://github.com/estemendoza/cloud-instance-scheduler/actions/workflows/ci.yml/badge.svg)](https://github.com/estemendoza/cloud-instance-scheduler/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/downloads/)
+[![Docs](https://img.shields.io/badge/docs-online-blue)](https://estemendoza.github.io/cloud-instance-scheduler/)
 
 **Save 40-65% on cloud compute — automatically.**
 
@@ -45,6 +46,8 @@ Each cloud provider offers some form of instance scheduling, but the solutions a
 | **Typical infra cost** | ~$5/month | ~$6/month per VM managed | Free (Instance Schedules) or minimal | Self-hosted |
 
 The core problem: if you use more than one cloud provider, you're managing completely separate scheduling systems with different configuration models, no unified view, and no way to track overall savings.
+
+> **Full documentation** — installation guides, configuration reference, architecture details, and more at [estemendoza.github.io/cloud-instance-scheduler](https://estemendoza.github.io/cloud-instance-scheduler/).
 
 ## Prerequisites
 
