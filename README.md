@@ -5,7 +5,7 @@
 # Cloud Instance Scheduler (CIS)
 
 [![CI](https://github.com/estemendoza/cloud-instance-scheduler/actions/workflows/ci.yml/badge.svg)](https://github.com/estemendoza/cloud-instance-scheduler/actions/workflows/ci.yml)
-[![License](https://img.shields.io/github/license/estemendoza/cloud-instance-scheduler)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/downloads/)
 
 **Save 40-65% on cloud compute — automatically.**
