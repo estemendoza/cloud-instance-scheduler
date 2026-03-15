@@ -20,9 +20,12 @@ from app.core.security import generate_api_key, get_api_key_hash, get_password_h
 from app.db.base import Base
 from app.db.session import get_db
 
-TEST_DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:7777/cis_test"
-TEST_DB_HOST = "localhost"
-TEST_DB_PORT = 7777
+TEST_DB_HOST = os.getenv("POSTGRES_SERVER", "localhost")
+TEST_DB_PORT = int(os.getenv("POSTGRES_PORT", "7777"))
+_test_user = os.getenv("POSTGRES_USER", "postgres")
+_test_pass = os.getenv("POSTGRES_PASSWORD", "postgres")
+_test_db = os.getenv("POSTGRES_DB", "cis_test")
+TEST_DATABASE_URL = f"postgresql+asyncpg://{_test_user}:{_test_pass}@{TEST_DB_HOST}:{TEST_DB_PORT}/{_test_db}"
 TEST_COMPOSE_FILE = Path(__file__).resolve().parent.parent / "docker-compose.test.yml"
 
 _engine = create_async_engine(TEST_DATABASE_URL, echo=False, poolclass=NullPool)
