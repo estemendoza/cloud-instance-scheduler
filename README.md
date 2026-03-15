@@ -4,6 +4,10 @@
 
 # Cloud Instance Scheduler (CIS)
 
+[![CI](https://github.com/estemendoza/cloud-instance-scheduler/actions/workflows/ci.yml/badge.svg)](https://github.com/estemendoza/cloud-instance-scheduler/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/estemendoza/cloud-instance-scheduler)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/downloads/)
+
 **Save 40-65% on cloud compute — automatically.**
 
 Most cloud instances don't need to run 24/7. Development, staging, and test environments sit idle nights, weekends, and holidays — but you keep paying for them.
