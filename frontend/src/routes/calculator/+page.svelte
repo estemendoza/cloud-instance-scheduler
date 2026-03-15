@@ -435,7 +435,7 @@
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-slate-700">
-                    {#each compareResults as result, index}
+                    {#each compareResults as result, _index}
                       {@const isLowest = result.monthly_cost === Math.min(...compareResults.map(r => r.monthly_cost))}
                       <tr class="{isLowest ? 'bg-emerald-900/20' : ''}">
                         <td class="px-4 py-3">

@@ -87,19 +87,6 @@
     }
   }
 
-  function getExecutionStatusClasses(status: string): string {
-    switch (status?.toLowerCase()) {
-      case 'success':
-        return 'bg-emerald-500';
-      case 'failure':
-        return 'bg-red-500';
-      case 'pending':
-        return 'bg-amber-500';
-      default:
-        return 'bg-slate-500';
-    }
-  }
-
   function formatCurrency(amount: number, currency: string = 'USD'): string {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -114,7 +101,7 @@
       timeline = data;
       currentPage = page;
       hasMore = data.length === PAGE_SIZE;
-    } catch (err) {
+    } catch {
       // Keep existing data on error
     } finally {
       loadingMore = false;

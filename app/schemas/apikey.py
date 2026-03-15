@@ -1,6 +1,6 @@
 from pydantic import BaseModel, computed_field
 from typing import Optional
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 import uuid
 
 DEFAULT_KEY_EXPIRY_DAYS = 90

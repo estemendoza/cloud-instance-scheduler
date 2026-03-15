@@ -3,7 +3,6 @@
   import { onMount } from 'svelte';
   import { authStore } from '$lib/stores/auth';
   import { providerMetadata, providerLabels, providerTypes, loadProviderMetadata, getProviderMeta } from '$lib/stores/providers';
-  import type { ProviderMetadata } from '$lib/api/endpoints/providers';
   import { cloudAccountsAPI } from '$lib/api/endpoints/cloudAccounts';
   import { usersAPI } from '$lib/api/endpoints/users';
   import { organizationsAPI } from '$lib/api/endpoints/organizations';
@@ -25,8 +24,6 @@
     IconEdit,
     IconTrash,
     IconX,
-    IconCopy,
-    IconCheck,
     IconAlertTriangle,
     IconCurrencyDollar,
   } from '@tabler/icons-svelte';
