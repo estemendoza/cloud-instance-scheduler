@@ -639,7 +639,7 @@
       <div class="flex items-center gap-1 mb-6 border-b border-slate-800 overflow-x-auto">
         {#each tabs as tab}
           <button
-            on:click={() => activeTab = tab.id}
+            onclick={() => activeTab = tab.id}
             class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-colors border-b-2 -mb-px {activeTab === tab.id
               ? 'text-emerald-500 border-emerald-500'
               : 'text-slate-400 border-transparent hover:text-slate-200 hover:border-slate-600'}"
@@ -657,7 +657,7 @@
           <div class="flex items-center justify-between mb-1">
             <h2 class="text-sm font-medium text-slate-300 uppercase tracking-wider">Cloud Accounts</h2>
             <button
-              on:click={openAddModal}
+              onclick={openAddModal}
               class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
             >
               <IconPlus size={16} stroke={2} />
@@ -676,7 +676,7 @@
               <p class="text-slate-400 mb-2">No cloud accounts configured</p>
               <p class="text-sm text-slate-500 mb-4">Add a cloud account to start discovering and managing resources</p>
               <button
-                on:click={openAddModal}
+                onclick={openAddModal}
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
               >
                 <IconPlus size={16} stroke={2} />
@@ -708,7 +708,7 @@
 
                     <div class="flex items-center gap-2 flex-shrink-0">
                         <button
-                          on:click={() => handleSync(account)}
+                          onclick={() => handleSync(account)}
                           disabled={syncing[account.id]}
                           class="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:text-emerald-400 bg-slate-700 hover:bg-slate-600 rounded transition-colors disabled:opacity-50"
                           title="Sync resources"
@@ -717,7 +717,7 @@
                           Sync
                         </button>
                         <button
-                          on:click={() => openEditModal(account)}
+                          onclick={() => openEditModal(account)}
                           class="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                           title="Edit account"
                         >
@@ -725,7 +725,7 @@
                           Edit
                         </button>
                         <button
-                          on:click={() => openDeleteModal(account)}
+                          onclick={() => openDeleteModal(account)}
                           class="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:text-red-400 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                           title="Delete account"
                         >
@@ -745,7 +745,7 @@
           <div class="flex items-center justify-between mb-1">
             <h2 class="text-sm font-medium text-slate-300 uppercase tracking-wider">Users</h2>
             <button
-              on:click={openAddUserModal}
+              onclick={openAddUserModal}
               class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
             >
               <IconPlus size={16} stroke={2} />
@@ -764,7 +764,7 @@
               <p class="text-slate-400 mb-2">No users found</p>
               <p class="text-sm text-slate-500 mb-4">Add team members to your organization</p>
               <button
-                on:click={openAddUserModal}
+                onclick={openAddUserModal}
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
               >
                 <IconPlus size={16} stroke={2} />
@@ -806,20 +806,20 @@
                       {#if deleteConfirmUserId === user.id}
                         <span class="text-xs text-red-400 mr-2">Delete?</span>
                         <button
-                          on:click={() => deleteUser(user.id)}
+                          onclick={() => deleteUser(user.id)}
                           class="px-2 py-1 text-xs text-red-400 hover:text-red-300 bg-red-900/30 hover:bg-red-900/50 border border-red-800 rounded transition-colors"
                         >
                           Yes
                         </button>
                         <button
-                          on:click={() => deleteConfirmUserId = null}
+                          onclick={() => deleteConfirmUserId = null}
                           class="px-2 py-1 text-xs text-slate-400 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                         >
                           No
                         </button>
                       {:else}
                         <button
-                          on:click={() => openEditUserModal(user)}
+                          onclick={() => openEditUserModal(user)}
                           class="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                           title="Edit user"
                         >
@@ -828,7 +828,7 @@
                         </button>
                         {#if user.id !== currentUserId}
                           <button
-                            on:click={() => deleteConfirmUserId = user.id}
+                            onclick={() => deleteConfirmUserId = user.id}
                             class="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:text-red-400 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                             title="Delete user"
                           >
@@ -870,7 +870,7 @@
               </div>
               <div class="mt-6 pt-4 border-t border-slate-700">
                 <button
-                  on:click={openOrgModal}
+                  onclick={openOrgModal}
                   class="flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                 >
                   <IconEdit size={16} />
@@ -908,7 +908,7 @@
                   {/if}
                 </div>
                 <button
-                  on:click={() => triggerPricingUpdate()}
+                  onclick={() => triggerPricingUpdate()}
                   disabled={triggerLoading || (pricingStatus?.is_running ?? false)}
                   class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -1054,8 +1054,8 @@
     <!-- Backdrop -->
     <div
       class="absolute inset-0 bg-black/60"
-      on:click={closeModal}
-      on:keypress={(e) => e.key === 'Escape' && closeModal()}
+      onclick={closeModal}
+      onkeypress={(e) => e.key === 'Escape' && closeModal()}
       role="button"
       tabindex="0"
       aria-label="Close modal"
@@ -1069,7 +1069,7 @@
           {modalMode === 'add' ? 'Add Cloud Account' : 'Edit Cloud Account'}
         </h2>
         <button
-          on:click={closeModal}
+          onclick={closeModal}
           class="p-1 text-slate-400 hover:text-slate-200 transition-colors"
         >
           <IconX size={20} />
@@ -1077,7 +1077,7 @@
       </div>
 
       <!-- Form -->
-      <form on:submit|preventDefault={handleSubmit} class="p-4 space-y-4">
+      <form onsubmit={(e) => { e.preventDefault(); handleSubmit(); }} class="p-4 space-y-4">
         {#if formError}
           <div class="p-3 bg-red-900/30 border border-red-800 rounded">
             <p class="text-sm text-red-400">{formError}</p>
@@ -1108,7 +1108,7 @@
               {#each $providerMetadata as provider}
                 <button
                   type="button"
-                  on:click={() => { formProvider = provider.provider_type; formCredentials = {}; }}
+                  onclick={() => { formProvider = provider.provider_type; formCredentials = {}; }}
                   class="flex-1 px-3 py-2 text-sm font-medium rounded border transition-colors {formProvider === provider.provider_type
                     ? 'bg-emerald-900/50 text-emerald-400 border-emerald-700'
                     : 'bg-slate-700 text-slate-400 border-slate-600 hover:text-slate-200'}"
@@ -1178,7 +1178,7 @@
                   type="radio"
                   name="region-mode"
                   checked={formAllRegions}
-                  on:change={() => { formAllRegions = true; formSelectedRegions = []; }}
+                  onchange={() => { formAllRegions = true; formSelectedRegions = []; }}
                   class="w-4 h-4 text-emerald-600 bg-slate-900 border-slate-600 focus:ring-emerald-500"
                 />
                 <span class="text-sm text-slate-300">All regions</span>
@@ -1189,7 +1189,7 @@
                   type="radio"
                   name="region-mode"
                   checked={!formAllRegions}
-                  on:change={() => formAllRegions = false}
+                  onchange={() => formAllRegions = false}
                   class="w-4 h-4 text-emerald-600 bg-slate-900 border-slate-600 focus:ring-emerald-500"
                 />
                 <span class="text-sm text-slate-300">Select specific regions</span>
@@ -1200,7 +1200,7 @@
               <div class="mt-3">
                 <button
                   type="button"
-                  on:click={() => showRegionSelector = !showRegionSelector}
+                  onclick={() => showRegionSelector = !showRegionSelector}
                   class="flex items-center gap-2 w-full px-3 py-2 bg-slate-700 hover:bg-slate-600 border border-slate-600 rounded text-sm text-slate-300 transition-colors"
                 >
                   <span class="flex-1 text-left">
@@ -1222,7 +1222,7 @@
                         <input
                           type="checkbox"
                           checked={formSelectedRegions.includes(region.code)}
-                          on:change={() => toggleRegion(region.code)}
+                          onchange={() => toggleRegion(region.code)}
                           class="w-3.5 h-3.5 text-emerald-600 bg-slate-900 border-slate-600 rounded focus:ring-emerald-500"
                         />
                         <span class="text-xs text-slate-300 font-mono">{region.code}</span>
@@ -1252,7 +1252,7 @@
         <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-700">
           <button
             type="button"
-            on:click={closeModal}
+            onclick={closeModal}
             class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
           >
             Cancel
@@ -1280,8 +1280,8 @@
     <!-- Backdrop -->
     <div
       class="absolute inset-0 bg-black/60"
-      on:click={closeUserModal}
-      on:keypress={(e) => e.key === 'Escape' && closeUserModal()}
+      onclick={closeUserModal}
+      onkeypress={(e) => e.key === 'Escape' && closeUserModal()}
       role="button"
       tabindex="0"
       aria-label="Close modal"
@@ -1295,7 +1295,7 @@
           {userModalMode === 'add' ? 'Add User' : 'Edit User'}
         </h2>
         <button
-          on:click={closeUserModal}
+          onclick={closeUserModal}
           class="p-1 text-slate-400 hover:text-slate-200 transition-colors"
         >
           <IconX size={20} />
@@ -1303,7 +1303,7 @@
       </div>
 
       <!-- Form -->
-      <form on:submit|preventDefault={handleUserSubmit} class="p-4 space-y-4">
+      <form onsubmit={(e) => { e.preventDefault(); handleUserSubmit(); }} class="p-4 space-y-4">
         {#if userFormError}
           <div class="p-3 bg-red-900/30 border border-red-800 rounded">
             <p class="text-sm text-red-400">{userFormError}</p>
@@ -1370,7 +1370,7 @@
             {#each roleOptions as role}
               <button
                 type="button"
-                on:click={() => userFormRole = role}
+                onclick={() => userFormRole = role}
                 class="flex-1 px-3 py-2 text-sm font-medium rounded border transition-colors {userFormRole === role
                   ? 'bg-emerald-900/50 text-emerald-400 border-emerald-700'
                   : 'bg-slate-700 text-slate-400 border-slate-600 hover:text-slate-200'}"
@@ -1399,7 +1399,7 @@
         <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-700">
           <button
             type="button"
-            on:click={closeUserModal}
+            onclick={closeUserModal}
             class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
           >
             Cancel
@@ -1427,8 +1427,8 @@
     <!-- Backdrop -->
     <div
       class="absolute inset-0 bg-black/60"
-      on:click={closeOrgModal}
-      on:keypress={(e) => e.key === 'Escape' && closeOrgModal()}
+      onclick={closeOrgModal}
+      onkeypress={(e) => e.key === 'Escape' && closeOrgModal()}
       role="button"
       tabindex="0"
       aria-label="Close modal"
@@ -1440,7 +1440,7 @@
       <div class="flex items-center justify-between p-4 border-b border-slate-700">
         <h2 class="text-lg font-medium text-slate-100">Edit Organization</h2>
         <button
-          on:click={closeOrgModal}
+          onclick={closeOrgModal}
           class="p-1 text-slate-400 hover:text-slate-200 transition-colors"
         >
           <IconX size={20} />
@@ -1448,7 +1448,7 @@
       </div>
 
       <!-- Form -->
-      <form on:submit|preventDefault={handleOrgSubmit} class="p-4 space-y-4">
+      <form onsubmit={(e) => { e.preventDefault(); handleOrgSubmit(); }} class="p-4 space-y-4">
         {#if orgFormError}
           <div class="p-3 bg-red-900/30 border border-red-800 rounded">
             <p class="text-sm text-red-400">{orgFormError}</p>
@@ -1490,7 +1490,7 @@
         <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-700">
           <button
             type="button"
-            on:click={closeOrgModal}
+            onclick={closeOrgModal}
             class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
           >
             Cancel
@@ -1518,8 +1518,8 @@
     <!-- Backdrop -->
     <div
       class="absolute inset-0 bg-black/60"
-      on:click={closeDeleteModal}
-      on:keypress={(e) => e.key === 'Escape' && closeDeleteModal()}
+      onclick={closeDeleteModal}
+      onkeypress={(e) => e.key === 'Escape' && closeDeleteModal()}
       role="button"
       tabindex="0"
       aria-label="Close modal"
@@ -1531,7 +1531,7 @@
       <div class="flex items-center justify-between p-4 border-b border-slate-700">
         <h2 class="text-lg font-medium text-red-400">Delete Cloud Account</h2>
         <button
-          on:click={closeDeleteModal}
+          onclick={closeDeleteModal}
           class="p-1 text-slate-400 hover:text-slate-200 transition-colors"
         >
           <IconX size={20} />
@@ -1570,13 +1570,13 @@
         <div class="flex items-center justify-end gap-3 pt-2">
           <button
             type="button"
-            on:click={closeDeleteModal}
+            onclick={closeDeleteModal}
             class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
           >
             Cancel
           </button>
           <button
-            on:click={confirmDelete}
+            onclick={confirmDelete}
             disabled={deleteConfirmText !== deleteConfirmAccount.name}
             class="px-4 py-2 bg-red-600 hover:bg-red-500 disabled:bg-red-900 disabled:text-red-400 text-white text-sm font-medium rounded transition-colors disabled:cursor-not-allowed"
           >

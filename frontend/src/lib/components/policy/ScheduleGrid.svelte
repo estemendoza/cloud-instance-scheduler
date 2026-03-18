@@ -1,16 +1,15 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import { DAYS_OF_WEEK, DAY_LABELS, type WeeklySchedule, type TimeWindow } from '$lib/types/policy';
 
   let {
     schedule = $bindable({}),
     disabled = false,
+    onchange,
   }: {
     schedule?: WeeklySchedule;
     disabled?: boolean;
+    onchange?: (value: WeeklySchedule) => void;
   } = $props();
-
-  const dispatch = createEventDispatcher<{ change: WeeklySchedule }>();
 
   // Grid state: 7 days × 24 hours
   // true = running (active), false = stopped
@@ -107,7 +106,7 @@
 
   function emitChange() {
     const newSchedule = convertGridToSchedule();
-    dispatch('change', newSchedule);
+    onchange?.(newSchedule);
   }
 
   // Quick actions
@@ -140,7 +139,7 @@
   }
 </script>
 
-<svelte:window on:mouseup={handleMouseUp} />
+<svelte:window onmouseup={handleMouseUp} />
 
 <div class="schedule-grid">
   <!-- Quick Actions -->
@@ -149,21 +148,21 @@
       <span class="text-xs text-slate-500 uppercase tracking-wider">Quick:</span>
       <button
         type="button"
-        on:click={setWeekdays9to5}
+        onclick={setWeekdays9to5}
         class="px-2 py-1 text-xs text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors"
       >
         Weekdays 9-6
       </button>
       <button
         type="button"
-        on:click={setAllDay}
+        onclick={setAllDay}
         class="px-2 py-1 text-xs text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors"
       >
         24/7
       </button>
       <button
         type="button"
-        on:click={clearAll}
+        onclick={clearAll}
         class="px-2 py-1 text-xs text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors"
       >
         Clear
@@ -216,8 +215,8 @@
               <button
                 type="button"
                 class="flex-1 min-w-[3rem] h-5 transition-colors {dayIndex > 0 ? 'border-l border-slate-800' : ''} {grid[dayIndex][hour] ? 'bg-emerald-600/80 hover:bg-emerald-500/80' : 'bg-slate-850 hover:bg-slate-800'} {disabled ? 'cursor-not-allowed opacity-60' : 'cursor-crosshair'}"
-                on:mousedown={(e) => handleMouseDown(dayIndex, hour, e)}
-                on:mouseenter={() => handleMouseEnter(dayIndex, hour)}
+                onmousedown={(e) => handleMouseDown(dayIndex, hour, e)}
+                onmouseenter={() => handleMouseEnter(dayIndex, hour)}
                 disabled={disabled}
                 aria-label="{DAY_LABELS[day]} {formatHour(hour)} - {grid[dayIndex][hour] ? 'Running' : 'Stopped'}"
                 aria-pressed={grid[dayIndex][hour]}

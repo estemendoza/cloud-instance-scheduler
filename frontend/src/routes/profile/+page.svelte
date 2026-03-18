@@ -295,7 +295,7 @@
       <div class="flex items-center gap-1 mb-6 border-b border-slate-800 overflow-x-auto">
         {#each tabs as tab}
           <button
-            on:click={() => activeTab = tab.id}
+            onclick={() => activeTab = tab.id}
             class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-colors border-b-2 -mb-px {activeTab === tab.id
               ? 'text-emerald-500 border-emerald-500'
               : 'text-slate-400 border-transparent hover:text-slate-200 hover:border-slate-600'}"
@@ -348,7 +348,7 @@
             {/if}
 
             <!-- Full Name (editable) -->
-            <form on:submit|preventDefault={handleProfileUpdate}>
+            <form onsubmit={(e) => { e.preventDefault(); handleProfileUpdate(); }}>
               <label for="fullName" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">Full Name</label>
               <div class="flex gap-3">
                 <input
@@ -375,7 +375,7 @@
         <div class="max-w-xl">
           <h2 class="text-sm font-medium text-slate-300 uppercase tracking-wider mb-4">Change Password</h2>
 
-          <form on:submit|preventDefault={handlePasswordChange} class="space-y-4">
+          <form onsubmit={(e) => { e.preventDefault(); handlePasswordChange(); }} class="space-y-4">
             <div>
               <label for="currentPassword" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">Current Password</label>
               <input
@@ -443,7 +443,7 @@
                   </div>
                 </div>
                 <button
-                  on:click={() => { showDisableForm = true; }}
+                  onclick={() => { showDisableForm = true; }}
                   class="px-3 py-1.5 text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-900/20 border border-red-800/50 rounded transition-colors"
                 >
                   Disable
@@ -456,7 +456,7 @@
             <div class="bg-slate-800 border border-slate-700 rounded-lg p-5">
               <p class="text-sm text-slate-400 mb-4">Enter your password and a current TOTP code to disable MFA.</p>
 
-              <form on:submit|preventDefault={handleMfaDisable} class="space-y-4">
+              <form onsubmit={(e) => { e.preventDefault(); handleMfaDisable(); }} class="space-y-4">
                 <div>
                   <label for="mfaDisablePassword" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">Password</label>
                   <input
@@ -494,7 +494,7 @@
                   </button>
                   <button
                     type="button"
-                    on:click={() => { showDisableForm = false; mfaDisablePassword = ''; mfaDisableCode = ''; }}
+                    onclick={() => { showDisableForm = false; mfaDisablePassword = ''; mfaDisableCode = ''; }}
                     class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                   >
                     Cancel
@@ -532,7 +532,7 @@
                 <div class="flex items-center gap-2">
                   <code class="flex-1 px-3 py-2 bg-slate-900 border border-slate-700 rounded text-sm text-slate-300 font-mono tracking-wider">{mfaSetupData.secret}</code>
                   <button
-                    on:click={copySecret}
+                    onclick={copySecret}
                     class="p-2 text-slate-400 hover:text-slate-200 hover:bg-slate-700 rounded transition-colors"
                     title="Copy secret"
                   >
@@ -546,7 +546,7 @@
               </div>
 
               <!-- Verify code -->
-              <form on:submit|preventDefault={handleMfaVerify}>
+              <form onsubmit={(e) => { e.preventDefault(); handleMfaVerify(); }}>
                 <label for="mfaVerifyCode" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">Verification Code</label>
                 <div class="flex gap-3">
                   <input
@@ -572,7 +572,7 @@
               </form>
 
               <button
-                on:click={cancelMfaSetup}
+                onclick={cancelMfaSetup}
                 class="text-sm text-slate-500 hover:text-slate-300 transition-colors"
               >
                 Cancel setup
@@ -597,7 +597,7 @@
                 Add an extra layer of security by requiring a TOTP code from your authenticator app on every login.
               </p>
               <button
-                on:click={handleMfaSetup}
+                onclick={handleMfaSetup}
                 disabled={mfaLoading}
                 class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 text-white text-sm font-medium rounded transition-colors disabled:cursor-not-allowed"
               >
@@ -613,7 +613,7 @@
           <div class="flex items-center justify-between mb-1">
             <h2 class="text-sm font-medium text-slate-300 uppercase tracking-wider">API Keys</h2>
             <button
-              on:click={openApiKeyModal}
+              onclick={openApiKeyModal}
               class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
             >
               <IconPlus size={16} stroke={2} />
@@ -632,7 +632,7 @@
               <p class="text-slate-400 mb-2">No API keys created</p>
               <p class="text-sm text-slate-500 mb-4">Create an API key for programmatic access to the scheduler</p>
               <button
-                on:click={openApiKeyModal}
+                onclick={openApiKeyModal}
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
               >
                 <IconPlus size={16} stroke={2} />
@@ -693,20 +693,20 @@
                       {#if deleteConfirmKeyId === key.id}
                         <span class="text-xs text-red-400 mr-2">Revoke?</span>
                         <button
-                          on:click={() => deleteApiKey(key.id)}
+                          onclick={() => deleteApiKey(key.id)}
                           class="px-2 py-1 text-xs text-red-400 hover:text-red-300 bg-red-900/30 hover:bg-red-900/50 border border-red-800 rounded transition-colors"
                         >
                           Yes
                         </button>
                         <button
-                          on:click={() => deleteConfirmKeyId = null}
+                          onclick={() => deleteConfirmKeyId = null}
                           class="px-2 py-1 text-xs text-slate-400 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                         >
                           No
                         </button>
                       {:else}
                         <button
-                          on:click={() => deleteConfirmKeyId = key.id}
+                          onclick={() => deleteConfirmKeyId = key.id}
                           class="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:text-red-400 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                         >
                           <IconTrash size={14} />
@@ -731,8 +731,8 @@
     <!-- Backdrop -->
     <div
       class="absolute inset-0 bg-black/60"
-      on:click={closeApiKeyModal}
-      on:keypress={(e) => e.key === 'Escape' && closeApiKeyModal()}
+      onclick={closeApiKeyModal}
+      onkeypress={(e) => e.key === 'Escape' && closeApiKeyModal()}
       role="button"
       tabindex="0"
       aria-label="Close modal"
@@ -746,7 +746,7 @@
           {createdKey ? 'API Key Created' : 'Create API Key'}
         </h2>
         <button
-          on:click={closeApiKeyModal}
+          onclick={closeApiKeyModal}
           class="p-1 text-slate-400 hover:text-slate-200 transition-colors"
         >
           <IconX size={20} />
@@ -774,7 +774,7 @@
                   {createdKey.key}
                 </code>
                 <button
-                  on:click={copyKey}
+                  onclick={copyKey}
                   class="flex-shrink-0 p-2 text-slate-400 hover:text-emerald-400 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                   title="Copy to clipboard"
                 >
@@ -789,7 +789,7 @@
 
             <div class="flex justify-end pt-2">
               <button
-                on:click={closeApiKeyModal}
+                onclick={closeApiKeyModal}
                 class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
               >
                 Done
@@ -798,7 +798,7 @@
           </div>
         {:else}
           <!-- Create form -->
-          <form on:submit|preventDefault={createApiKey} class="space-y-4">
+          <form onsubmit={(e) => { e.preventDefault(); createApiKey(); }} class="space-y-4">
             <div>
               <label for="key-name" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">
                 Name <span class="text-red-500">*</span>
@@ -818,7 +818,7 @@
             <div class="flex items-center justify-end gap-3 pt-2">
               <button
                 type="button"
-                on:click={closeApiKeyModal}
+                onclick={closeApiKeyModal}
                 class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
               >
                 Cancel

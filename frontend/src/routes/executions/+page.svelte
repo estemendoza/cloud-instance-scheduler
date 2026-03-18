@@ -161,7 +161,7 @@
           </p>
         </div>
         <button
-          on:click={() => { currentPage = 0; loadExecutions(); }}
+          onclick={() => { currentPage = 0; loadExecutions(); }}
           disabled={loading}
           class="px-3 py-1.5 text-sm text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors disabled:opacity-50"
         >
@@ -227,14 +227,14 @@
 
           <div class="flex gap-2">
             <button
-              on:click={applyFilters}
+              onclick={applyFilters}
               class="px-4 py-2 text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white rounded transition-colors"
             >
               Apply
             </button>
             {#if hasFilters}
               <button
-                on:click={clearFilters}
+                onclick={clearFilters}
                 class="px-4 py-2 text-sm text-slate-400 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
               >
                 Clear
@@ -292,8 +292,8 @@
                 {#each executions as execution}
                   <tr
                     class="hover:bg-slate-700/50 cursor-pointer transition-colors"
-                    on:click={() => handleRowClick(execution)}
-                    on:keypress={(e) => e.key === 'Enter' && handleRowClick(execution)}
+                    onclick={() => handleRowClick(execution)}
+                    onkeypress={(e) => e.key === 'Enter' && handleRowClick(execution)}
                     tabindex="0"
                     role="button"
                   >
@@ -357,7 +357,7 @@
           {#if totalPages > 1}
             <div class="flex items-center gap-3">
               <button
-                on:click={() => loadPage(currentPage - 1)}
+                onclick={() => loadPage(currentPage - 1)}
                 disabled={currentPage === 0 || loading}
                 class="px-3 py-1.5 text-xs font-medium rounded border transition-colors
                   {currentPage === 0
@@ -370,7 +370,7 @@
                 Page {currentPage + 1} of {totalPages}
               </span>
               <button
-                on:click={() => loadPage(currentPage + 1)}
+                onclick={() => loadPage(currentPage + 1)}
                 disabled={currentPage >= totalPages - 1 || loading}
                 class="px-3 py-1.5 text-xs font-medium rounded border transition-colors
                   {currentPage >= totalPages - 1

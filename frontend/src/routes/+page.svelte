@@ -118,7 +118,7 @@
           </p>
         </div>
         <button
-          on:click={loadDashboardData}
+          onclick={loadDashboardData}
           disabled={loading}
           class="px-3 py-1.5 text-sm text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors disabled:opacity-50"
         >

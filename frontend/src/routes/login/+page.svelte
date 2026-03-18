@@ -108,7 +108,7 @@
 
       {#if showMfaStep}
         <!-- MFA Step -->
-        <form on:submit|preventDefault={handleMfaSubmit}>
+        <form onsubmit={(e) => { e.preventDefault(); handleMfaSubmit(); }}>
           <div class="space-y-4">
             <p class="text-sm text-slate-400">
               Enter the 6-digit code from your authenticator app.
@@ -121,7 +121,7 @@
                 id="mfaCode"
                 type="text"
                 bind:value={mfaCode}
-                on:input={onMfaCodeInput}
+                oninput={onMfaCodeInput}
                 placeholder="000000"
                 required
                 maxlength="6"
@@ -153,7 +153,7 @@
 
             <button
               type="button"
-              on:click={backToLogin}
+              onclick={backToLogin}
               class="w-full text-sm text-slate-500 hover:text-slate-300 transition-colors"
             >
               Back to login
@@ -162,7 +162,7 @@
         </form>
       {:else}
         <!-- Login Step -->
-        <form on:submit|preventDefault={handleLogin}>
+        <form onsubmit={(e) => { e.preventDefault(); handleLogin(); }}>
           <div class="space-y-4">
             <div>
               <label for="email" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">

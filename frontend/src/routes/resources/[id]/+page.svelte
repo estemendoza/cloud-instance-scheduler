@@ -188,7 +188,7 @@
     <div class="p-6">
       <!-- Back Button -->
       <button
-        on:click={goBack}
+        onclick={goBack}
         class="flex items-center gap-2 text-slate-400 hover:text-slate-200 mb-6 text-sm transition-colors"
       >
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -201,7 +201,7 @@
         <div class="mb-4 p-4 bg-red-900/30 border border-red-800 rounded-lg">
           <p class="text-red-400">{error}</p>
           <button
-            on:click={goBack}
+            onclick={goBack}
             class="mt-3 px-4 py-2 text-sm bg-slate-700 hover:bg-slate-600 text-slate-200 rounded transition-colors"
           >
             Return to Resources
@@ -241,7 +241,7 @@
             <p class="text-sm text-slate-500 font-mono">{resource.provider_resource_id}</p>
           </div>
           <button
-            on:click={loadResourceData}
+            onclick={loadResourceData}
             class="px-3 py-1.5 text-sm text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors"
           >
             Refresh
@@ -363,7 +363,7 @@
                 {#if currentPage > 0 || hasMore}
                   <div class="flex items-center justify-between pt-4 mt-4 border-t border-slate-700">
                     <button
-                      on:click={() => loadTimelinePage(currentPage - 1)}
+                      onclick={() => loadTimelinePage(currentPage - 1)}
                       disabled={currentPage === 0 || loadingMore}
                       class="px-3 py-1.5 text-xs font-medium rounded border transition-colors
                         {currentPage === 0
@@ -376,7 +376,7 @@
                       Page {currentPage + 1}{#if totalExecutions > 0} of {Math.ceil(totalExecutions / PAGE_SIZE)}{/if}
                     </span>
                     <button
-                      on:click={() => loadTimelinePage(currentPage + 1)}
+                      onclick={() => loadTimelinePage(currentPage + 1)}
                       disabled={!hasMore || loadingMore}
                       class="px-3 py-1.5 text-xs font-medium rounded border transition-colors
                         {!hasMore
@@ -459,7 +459,7 @@
                 <h2 class="text-sm font-medium text-slate-300 uppercase tracking-wider">Active Overrides</h2>
                 {#if canManageOverrides && !showOverrideForm}
                   <button
-                    on:click={() => showOverrideForm = true}
+                    onclick={() => showOverrideForm = true}
                     class="text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
                   >
                     + Create
@@ -504,14 +504,14 @@
                   {/if}
                   <div class="flex gap-2">
                     <button
-                      on:click={createOverride}
+                      onclick={createOverride}
                       disabled={overrideSubmitting || !overrideExpiresAt}
                       class="flex-1 px-3 py-1.5 text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white rounded transition-colors disabled:opacity-50"
                     >
                       {overrideSubmitting ? 'Creating...' : 'Create'}
                     </button>
                     <button
-                      on:click={() => { showOverrideForm = false; overrideError = ''; }}
+                      onclick={() => { showOverrideForm = false; overrideError = ''; }}
                       class="px-3 py-1.5 text-sm text-slate-400 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                     >
                       Cancel
@@ -539,7 +539,7 @@
                         </span>
                         {#if canManageOverrides}
                           <button
-                            on:click={() => cancelOverride(override.id)}
+                            onclick={() => cancelOverride(override.id)}
                             class="text-xs text-red-400 hover:text-red-300 transition-colors"
                           >
                             Cancel

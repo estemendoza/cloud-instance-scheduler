@@ -88,7 +88,7 @@
           </p>
         </div>
         <button
-          on:click={loadOverrides}
+          onclick={loadOverrides}
           disabled={loading}
           class="px-3 py-1.5 text-sm text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors disabled:opacity-50"
         >
@@ -189,7 +189,7 @@
                     {#if canManage}
                       <td class="px-4 py-3">
                         <button
-                          on:click={() => cancelOverride(override.id)}
+                          onclick={() => cancelOverride(override.id)}
                           class="text-xs text-red-400 hover:text-red-300 transition-colors"
                         >
                           Cancel

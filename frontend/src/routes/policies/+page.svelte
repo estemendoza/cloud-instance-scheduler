@@ -110,7 +110,7 @@
 
         {#if isAdmin}
           <button
-            on:click={() => goto('/policies/new')}
+            onclick={() => goto('/policies/new')}
             class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
           >
             Create Policy
@@ -137,7 +137,7 @@
           <p class="text-slate-500 text-sm mb-4">Create a policy to start scheduling your resources</p>
           {#if isAdmin}
             <button
-              on:click={() => goto('/policies/new')}
+              onclick={() => goto('/policies/new')}
               class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded transition-colors"
             >
               Create Policy
@@ -180,7 +180,7 @@
                   </td>
                   <td class="px-4 py-3">
                     <button
-                      on:click={() => toggleEnabled(policy)}
+                      onclick={() => toggleEnabled(policy)}
                       disabled={togglingId === policy.id || !isAdmin}
                       class="relative inline-flex h-5 w-9 items-center rounded-full transition-colors {policy.is_enabled ? 'bg-emerald-600' : 'bg-slate-600'} {!isAdmin ? 'opacity-50 cursor-not-allowed' : ''}"
                     >
@@ -193,14 +193,14 @@
                   <td class="px-4 py-3 text-right">
                     <div class="flex items-center justify-end gap-2">
                       <button
-                        on:click={() => goto(`/policies/${policy.id}`)}
+                        onclick={() => goto(`/policies/${policy.id}`)}
                         class="px-2.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
                       >
                         {isAdmin ? 'Edit' : 'View'}
                       </button>
                       {#if isAdmin}
                         <button
-                          on:click={() => deletePolicy(policy)}
+                          onclick={() => deletePolicy(policy)}
                           class="px-2.5 py-1.5 text-xs font-medium text-red-400 hover:text-red-300 bg-slate-700 hover:bg-red-900/30 rounded transition-colors"
                         >
                           Delete

@@ -209,19 +209,19 @@
         <!-- Tabs -->
         <div class="flex border-b border-slate-700 mb-6">
           <button
-            on:click={() => activeTab = 'estimate'}
+            onclick={() => activeTab = 'estimate'}
             class="px-4 py-2 text-sm font-medium transition-colors {activeTab === 'estimate' ? 'text-emerald-400 border-b-2 border-emerald-400' : 'text-slate-400 hover:text-slate-300'}"
           >
             Estimate
           </button>
           <button
-            on:click={() => activeTab = 'compare'}
+            onclick={() => activeTab = 'compare'}
             class="px-4 py-2 text-sm font-medium transition-colors {activeTab === 'compare' ? 'text-emerald-400 border-b-2 border-emerald-400' : 'text-slate-400 hover:text-slate-300'}"
           >
             Compare
           </button>
           <button
-            on:click={() => activeTab = 'schedule'}
+            onclick={() => activeTab = 'schedule'}
             class="px-4 py-2 text-sm font-medium transition-colors {activeTab === 'schedule' ? 'text-emerald-400 border-b-2 border-emerald-400' : 'text-slate-400 hover:text-slate-300'}"
           >
             Schedule
@@ -285,7 +285,7 @@
                 </div>
 
                 <button
-                  on:click={calculateEstimate}
+                  onclick={calculateEstimate}
                   disabled={calculating || !estimateInstanceType}
                   class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white text-sm font-medium rounded transition-colors"
                 >
@@ -346,7 +346,7 @@
                 <h2 class="text-sm font-medium text-slate-300 uppercase tracking-wider">Instances to Compare</h2>
                 {#if compareInstances.length < 4}
                   <button
-                    on:click={addCompareInstance}
+                    onclick={addCompareInstance}
                     class="text-xs text-emerald-400 hover:text-emerald-300"
                   >
                     + Add Instance
@@ -361,7 +361,7 @@
                       <span class="text-xs text-slate-400">Instance {index + 1}</span>
                       {#if compareInstances.length > 2}
                         <button
-                          on:click={() => removeCompareInstance(index)}
+                          onclick={() => removeCompareInstance(index)}
                           class="text-xs text-red-400 hover:text-red-300"
                         >
                           Remove
@@ -411,7 +411,7 @@
                   />
                 </div>
                 <button
-                  on:click={calculateCompare}
+                  onclick={calculateCompare}
                   disabled={calculating}
                   class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 text-white text-sm font-medium rounded transition-colors"
                 >
@@ -500,7 +500,7 @@
                     {#each DAYS as day}
                       <div class="flex items-center gap-3">
                         <button
-                          on:click={() => toggleDay(day)}
+                          onclick={() => toggleDay(day)}
                           class="w-12 text-xs font-medium py-1 rounded {schedule[day] ? 'bg-emerald-600 text-white' : 'bg-slate-700 text-slate-400'}"
                         >
                           {DAY_LABELS[day]}
@@ -509,14 +509,14 @@
                           <input
                             type="time"
                             value={schedule[day]?.[0]?.start || '09:00'}
-                            on:change={(e) => updateDayTime(day, 'start', e.currentTarget.value)}
+                            onchange={(e) => updateDayTime(day, 'start', (e.target as HTMLInputElement).value)}
                             class="px-2 py-1 bg-slate-700 border border-slate-600 rounded text-slate-200 text-xs"
                           />
                           <span class="text-slate-500">to</span>
                           <input
                             type="time"
                             value={schedule[day]?.[0]?.end || '18:00'}
-                            on:change={(e) => updateDayTime(day, 'end', e.currentTarget.value)}
+                            onchange={(e) => updateDayTime(day, 'end', (e.target as HTMLInputElement).value)}
                             class="px-2 py-1 bg-slate-700 border border-slate-600 rounded text-slate-200 text-xs"
                           />
                         {:else}
@@ -528,7 +528,7 @@
                 </div>
 
                 <button
-                  on:click={calculateSchedule}
+                  onclick={calculateSchedule}
                   disabled={calculating || !scheduleInstanceType}
                   class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white text-sm font-medium rounded transition-colors"
                 >

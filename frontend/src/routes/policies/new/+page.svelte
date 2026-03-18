@@ -93,20 +93,20 @@
     }
   }
 
-  function handleScheduleChange(event: CustomEvent<WeeklySchedule>) {
-    weeklySchedule = event.detail;
+  function handleScheduleChange(value: WeeklySchedule) {
+    weeklySchedule = value;
   }
 
-  function handleCronScheduleChange(event: CustomEvent<CronSchedule>) {
-    cronSchedule = event.detail;
+  function handleCronScheduleChange(value: CronSchedule) {
+    cronSchedule = value;
   }
 
-  function handleTimezoneChange(event: CustomEvent<string>) {
-    timezone = event.detail;
+  function handleTimezoneChange(value: string) {
+    timezone = value;
   }
 
-  function handleResourceSelectorChange(event: CustomEvent<ResourceSelectorType>) {
-    resourceSelector = event.detail;
+  function handleResourceSelectorChange(value: ResourceSelectorType) {
+    resourceSelector = value;
   }
 </script>
 
@@ -122,7 +122,7 @@
       <!-- Header -->
       <div class="mb-6">
         <button
-          on:click={() => goto('/policies')}
+          onclick={() => goto('/policies')}
           class="flex items-center gap-1 text-sm text-slate-400 hover:text-slate-200 mb-2"
         >
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -140,7 +140,7 @@
         </div>
       {/if}
 
-      <form on:submit|preventDefault={handleSubmit} class="space-y-6">
+      <form onsubmit={(e) => { e.preventDefault(); handleSubmit(); }} class="space-y-6">
         <!-- Basic Info Section -->
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-5">
           <h2 class="text-sm font-medium text-slate-300 uppercase tracking-wider mb-4">Basic Information</h2>
@@ -177,7 +177,7 @@
                 Timezone <span class="text-red-500">*</span>
               </label>
               <div class="max-w-xs">
-                <TimezoneSelect value={timezone} on:change={handleTimezoneChange} />
+                <TimezoneSelect value={timezone} onchange={handleTimezoneChange} />
               </div>
               <p class="text-xs text-slate-500 mt-1">Schedule times will be in this timezone</p>
             </div>
@@ -208,14 +208,14 @@
             <div class="flex items-center bg-slate-900 border border-slate-700 rounded-lg p-0.5">
               <button
                 type="button"
-                on:click={() => scheduleType = 'weekly'}
+                onclick={() => scheduleType = 'weekly'}
                 class="px-3 py-1.5 text-xs font-medium rounded-md transition-colors {scheduleType === 'weekly' ? 'bg-slate-700 text-slate-100' : 'text-slate-400 hover:text-slate-300'}"
               >
                 Weekly Grid
               </button>
               <button
                 type="button"
-                on:click={() => scheduleType = 'cron'}
+                onclick={() => scheduleType = 'cron'}
                 class="px-3 py-1.5 text-xs font-medium rounded-md transition-colors {scheduleType === 'cron' ? 'bg-slate-700 text-slate-100' : 'text-slate-400 hover:text-slate-300'}"
               >
                 Cron Expression
@@ -224,9 +224,9 @@
           </div>
 
           {#if scheduleType === 'weekly'}
-            <ScheduleGrid schedule={weeklySchedule} on:change={handleScheduleChange} />
+            <ScheduleGrid schedule={weeklySchedule} onchange={handleScheduleChange} />
           {:else}
-            <CronScheduleInput schedule={cronSchedule} on:change={handleCronScheduleChange} />
+            <CronScheduleInput schedule={cronSchedule} onchange={handleCronScheduleChange} />
           {/if}
         </div>
 
@@ -237,14 +237,14 @@
             Choose which resources this policy applies to
           </p>
 
-          <ResourceSelector value={resourceSelector} on:change={handleResourceSelectorChange} />
+          <ResourceSelector value={resourceSelector} onchange={handleResourceSelectorChange} />
         </div>
 
         <!-- Actions -->
         <div class="flex items-center justify-end gap-3 pt-4">
           <button
             type="button"
-            on:click={() => goto('/policies')}
+            onclick={() => goto('/policies')}
             class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
           >
             Cancel

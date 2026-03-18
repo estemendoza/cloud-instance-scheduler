@@ -1,15 +1,13 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
   let {
     value = $bindable(''),
     disabled = false,
+    onchange,
   }: {
     value?: string;
     disabled?: boolean;
+    onchange?: (value: string) => void;
   } = $props();
-
-  const dispatch = createEventDispatcher<{ change: string }>();
 
   let searchQuery = $state('');
   let isOpen = $state(false);
@@ -75,7 +73,7 @@
     value = tz;
     isOpen = false;
     searchQuery = '';
-    dispatch('change', tz);
+    onchange?.(tz);
   }
 
   function handleKeydown(event: KeyboardEvent) {
