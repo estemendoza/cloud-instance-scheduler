@@ -20,7 +20,6 @@ boto3 = "^1.42.68"
 google-cloud-compute = "^1.46.0"
 azure-mgmt-compute = "^37.2.0"
 azure-identity = "^1.25.3"
-python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 requests = "^2.31.0"
 cryptography = "^46.0.4"
