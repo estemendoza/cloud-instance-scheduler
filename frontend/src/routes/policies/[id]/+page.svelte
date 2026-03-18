@@ -12,22 +12,22 @@
   import ResourceSelector from '$lib/components/policy/ResourceSelector.svelte';
   import type { Policy, WeeklySchedule, CronSchedule, ResourceSelector as ResourceSelectorType, PolicyUpdate, ScheduleType } from '$lib/types/policy';
 
-  let policy: Policy | null = null;
-  let name = '';
-  let description = '';
-  let timezone = 'UTC';
-  let scheduleType: ScheduleType = 'weekly';
-  let weeklySchedule: WeeklySchedule = {};
-  let cronSchedule: CronSchedule = { start: '', stop: '' };
-  let resourceSelector: ResourceSelectorType = { tags: {} };
-  let isEnabled = true;
+  let policy = $state<Policy | null>(null);
+  let name = $state('');
+  let description = $state('');
+  let timezone = $state('UTC');
+  let scheduleType = $state<ScheduleType>('weekly');
+  let weeklySchedule = $state<WeeklySchedule>({});
+  let cronSchedule = $state<CronSchedule>({ start: '', stop: '' });
+  let resourceSelector = $state<ResourceSelectorType>({ tags: {} });
+  let isEnabled = $state(true);
 
-  let loadingPolicy = true;
-  let saving = false;
-  let error = '';
+  let loadingPolicy = $state(true);
+  let saving = $state(false);
+  let error = $state('');
 
-  $: policyId = $page.params.id as string;
-  $: isAdmin = $authStore.user?.role === 'admin';
+  let policyId = $derived($page.params.id as string);
+  let isAdmin = $derived($authStore.user?.role === 'admin');
 
   onMount(async () => {
     await loadPolicy();

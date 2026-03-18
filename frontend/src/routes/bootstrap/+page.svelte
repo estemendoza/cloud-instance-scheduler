@@ -7,28 +7,30 @@
   import LogoOrbit from '$lib/components/ui/LogoOrbit.svelte';
   import type { Organization } from '$lib/types/organization';
 
-  let step = 1;
-  let loading = false;
-  let error = '';
+  let step = $state(1);
+  let loading = $state(false);
+  let error = $state('');
 
   // Step 1: Organization
-  let orgName = '';
-  let orgSlug = '';
-  let createdOrg: Organization | null = null;
+  let orgName = $state('');
+  let orgSlug = $state('');
+  let createdOrg = $state<Organization | null>(null);
 
   // Step 2: User
-  let userEmail = '';
-  let userPassword = '';
-  let userFullName = '';
-  let createdUserId = '';
+  let userEmail = $state('');
+  let userPassword = $state('');
+  let userFullName = $state('');
+  let createdUserId = $state('');
 
   // Auto-generate slug from name
-  $: if (orgName) {
-    orgSlug = orgName
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-  }
+  $effect(() => {
+    if (orgName) {
+      orgSlug = orgName
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+  });
 
   async function createOrganization() {
     error = '';

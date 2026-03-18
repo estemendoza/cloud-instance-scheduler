@@ -38,41 +38,41 @@
     { id: 'api-keys', label: 'API Keys', icon: IconKey },
   ];
 
-  let activeTab: TabId = 'profile';
+  let activeTab = $state<TabId>('profile');
 
   // Profile state
-  let fullName = $authStore.user?.full_name || '';
-  let profileLoading = false;
+  let fullName = $state($authStore.user?.full_name || '');
+  let profileLoading = $state(false);
 
   // Password state
-  let currentPassword = '';
-  let newPassword = '';
-  let confirmPassword = '';
-  let passwordLoading = false;
+  let currentPassword = $state('');
+  let newPassword = $state('');
+  let confirmPassword = $state('');
+  let passwordLoading = $state(false);
 
   // MFA state
-  let mfaEnabled = false;
-  let mfaLoading = false;
-  let mfaSetupData: MfaSetupResponse | null = null;
-  let mfaVerifyCode = '';
-  let mfaDisablePassword = '';
-  let mfaDisableCode = '';
-  let showDisableForm = false;
+  let mfaEnabled = $state(false);
+  let mfaLoading = $state(false);
+  let mfaSetupData = $state<MfaSetupResponse | null>(null);
+  let mfaVerifyCode = $state('');
+  let mfaDisablePassword = $state('');
+  let mfaDisableCode = $state('');
+  let showDisableForm = $state(false);
 
-  $: mfaVerifyCode = mfaVerifyCode.replace(/\D/g, '').slice(0, 6);
-  $: mfaDisableCode = mfaDisableCode.replace(/\D/g, '').slice(0, 6);
-  let secretCopied = false;
+  $effect(() => { mfaVerifyCode = mfaVerifyCode.replace(/\D/g, '').slice(0, 6); });
+  $effect(() => { mfaDisableCode = mfaDisableCode.replace(/\D/g, '').slice(0, 6); });
+  let secretCopied = $state(false);
 
   // API Keys state
-  let apiKeys: APIKey[] = [];
-  let apiKeysLoading = false;
-  let apiKeysLoaded = false;
-  let showApiKeyModal = false;
-  let newKeyName = '';
-  let newKeyLoading = false;
-  let createdKey: APIKeyCreated | null = null;
-  let deleteConfirmKeyId: string | null = null;
-  let keyCopied = false;
+  let apiKeys = $state<APIKey[]>([]);
+  let apiKeysLoading = $state(false);
+  let apiKeysLoaded = $state(false);
+  let showApiKeyModal = $state(false);
+  let newKeyName = $state('');
+  let newKeyLoading = $state(false);
+  let createdKey = $state<APIKeyCreated | null>(null);
+  let deleteConfirmKeyId = $state<string | null>(null);
+  let keyCopied = $state(false);
 
   onMount(async () => {
     try {
@@ -247,21 +247,25 @@
   }
 
   // Load API keys when switching to that tab
-  $: if (activeTab === 'api-keys' && !apiKeysLoaded && !apiKeysLoading) {
-    loadApiKeys();
-  }
+  $effect(() => {
+    if (activeTab === 'api-keys' && !apiKeysLoaded && !apiKeysLoading) {
+      loadApiKeys();
+    }
+  });
 
-  let qrDataUrl = '';
+  let qrDataUrl = $state('');
 
-  $: if (mfaSetupData?.provisioning_uri) {
-    QRCode.toDataURL(mfaSetupData.provisioning_uri, {
-      width: 200,
-      margin: 2,
-      color: { dark: '#000000', light: '#ffffff' }
-    }).then(url => { qrDataUrl = url; });
-  } else {
-    qrDataUrl = '';
-  }
+  $effect(() => {
+    if (mfaSetupData?.provisioning_uri) {
+      QRCode.toDataURL(mfaSetupData.provisioning_uri, {
+        width: 200,
+        margin: 2,
+        color: { dark: '#000000', light: '#ffffff' }
+      }).then(url => { qrDataUrl = url; });
+    } else {
+      qrDataUrl = '';
+    }
+  });
 
   async function copySecret() {
     if (mfaSetupData) {

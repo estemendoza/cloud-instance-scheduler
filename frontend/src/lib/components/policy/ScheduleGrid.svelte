@@ -2,21 +2,26 @@
   import { createEventDispatcher } from 'svelte';
   import { DAYS_OF_WEEK, DAY_LABELS, type WeeklySchedule, type TimeWindow } from '$lib/types/policy';
 
-  export let schedule: WeeklySchedule = {};
-  export let disabled = false;
+  let {
+    schedule = $bindable({}),
+    disabled = false,
+  }: {
+    schedule?: WeeklySchedule;
+    disabled?: boolean;
+  } = $props();
 
   const dispatch = createEventDispatcher<{ change: WeeklySchedule }>();
 
   // Grid state: 7 days × 24 hours
   // true = running (active), false = stopped
-  let grid: boolean[][] = Array(7).fill(null).map(() => Array(24).fill(false));
+  let grid: boolean[][] = $state(Array(7).fill(null).map(() => Array(24).fill(false)));
 
   // Drag state
-  let isDragging = false;
-  let dragMode: 'add' | 'remove' = 'add';
+  let isDragging = $state(false);
+  let dragMode: 'add' | 'remove' = $state('add');
 
   // Initialize grid from schedule prop
-  $: initializeFromSchedule(schedule);
+  $effect(() => { initializeFromSchedule(schedule); });
 
   function initializeFromSchedule(sched: WeeklySchedule) {
     // Reset grid

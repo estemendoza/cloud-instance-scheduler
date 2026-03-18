@@ -6,7 +6,10 @@
   import { authStore } from '$lib/stores/auth';
   import { systemStore } from '$lib/stores/system';
   import { systemAPI } from '$lib/api/endpoints/system';
+  import type { Snippet } from 'svelte';
   import '../app.css';
+
+  let { children }: { children: Snippet } = $props();
 
   let loading = true;
 
@@ -76,5 +79,5 @@
     </div>
   </div>
 {:else}
-  <slot />
+  {@render children()}
 {/if}

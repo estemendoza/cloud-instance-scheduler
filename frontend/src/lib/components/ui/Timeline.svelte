@@ -13,8 +13,13 @@
     actual_state_before: string;
   }
 
-  export let items: TimelineItem[] = [];
-  export let loading: boolean = false;
+  let {
+    items = [],
+    loading = false,
+  }: {
+    items?: TimelineItem[];
+    loading?: boolean;
+  } = $props();
 
   function formatDate(isoDate: string): string {
     return new Date(isoDate).toLocaleString();

@@ -10,24 +10,26 @@
   import ResourceSelector from '$lib/components/policy/ResourceSelector.svelte';
   import type { WeeklySchedule, CronSchedule, ResourceSelector as ResourceSelectorType, PolicyCreate, ScheduleType } from '$lib/types/policy';
 
-  let name = '';
-  let description = '';
-  let timezone = 'UTC';
-  let scheduleType: ScheduleType = 'weekly';
-  let weeklySchedule: WeeklySchedule = {};
-  let cronSchedule: CronSchedule = { start: '', stop: '' };
-  let resourceSelector: ResourceSelectorType = { tags: {} };
-  let isEnabled = true;
+  let name = $state('');
+  let description = $state('');
+  let timezone = $state('UTC');
+  let scheduleType = $state<ScheduleType>('weekly');
+  let weeklySchedule = $state<WeeklySchedule>({});
+  let cronSchedule = $state<CronSchedule>({ start: '', stop: '' });
+  let resourceSelector = $state<ResourceSelectorType>({ tags: {} });
+  let isEnabled = $state(true);
 
-  let loading = false;
-  let error = '';
+  let loading = $state(false);
+  let error = $state('');
 
-  $: isAdmin = $authStore.user?.role === 'admin';
+  let isAdmin = $derived($authStore.user?.role === 'admin');
 
   // Redirect if not admin
-  $: if ($authStore.user && !isAdmin) {
-    goto('/policies');
-  }
+  $effect(() => {
+    if ($authStore.user && !isAdmin) {
+      goto('/policies');
+    }
+  });
 
   async function handleSubmit() {
     error = '';

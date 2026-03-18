@@ -43,74 +43,76 @@
     { id: 'pricing', label: 'Pricing', icon: IconCurrencyDollar }
   ];
 
-  let activeTab: TabId = 'cloud-accounts';
+  let activeTab = $state<TabId>('cloud-accounts');
 
   // Cloud accounts state
-  let accounts: CloudAccount[] = [];
-  let loading = true;
-  let syncing: Record<string, boolean> = {};
+  let accounts = $state<CloudAccount[]>([]);
+  let loading = $state(true);
+  let syncing = $state<Record<string, boolean>>({});
 
   // Modal state
-  let showModal = false;
-  let modalMode: 'add' | 'edit' = 'add';
-  let editingAccount: CloudAccount | null = null;
+  let showModal = $state(false);
+  let modalMode = $state<'add' | 'edit'>('add');
+  let editingAccount = $state<CloudAccount | null>(null);
 
   // Form state
-  let formName = '';
-  let formProvider = 'aws';
-  let formCredentials: Record<string, string> = {};
+  let formName = $state('');
+  let formProvider = $state('aws');
+  let formCredentials = $state<Record<string, string>>({});
 
   // Derive current provider's metadata from the store
-  $: currentMeta = getProviderMeta($providerMetadata, formProvider);
-  $: credentialFields = currentMeta?.credential_fields ?? [];
-  $: regionsList = currentMeta?.regions ?? [];
-  $: regionLabel = currentMeta?.region_label ?? 'Regions';
-  let formIsActive = true;
-  let formSelectedRegions: string[] = [];
-  let formAllRegions = true; // true = scan all regions
-  let showRegionSelector = false;
-  let formError = '';
-  let formLoading = false;
+  let currentMeta = $derived(getProviderMeta($providerMetadata, formProvider));
+  let credentialFields = $derived(currentMeta?.credential_fields ?? []);
+  let regionsList = $derived(currentMeta?.regions ?? []);
+  let regionLabel = $derived(currentMeta?.region_label ?? 'Regions');
+  let formIsActive = $state(true);
+  let formSelectedRegions = $state<string[]>([]);
+  let formAllRegions = $state(true); // true = scan all regions
+  let showRegionSelector = $state(false);
+  let formError = $state('');
+  let formLoading = $state(false);
 
   // Delete confirmation
-  let showDeleteModal = false;
-  let deleteConfirmAccount: CloudAccount | null = null;
-  let deleteConfirmText = '';
+  let showDeleteModal = $state(false);
+  let deleteConfirmAccount = $state<CloudAccount | null>(null);
+  let deleteConfirmText = $state('');
 
   // Users state
-  let users: User[] = [];
-  let usersLoading = false;
-  let usersLoaded = false;
-  let showUserModal = false;
-  let userModalMode: 'add' | 'edit' = 'add';
-  let editingUser: User | null = null;
-  let userFormEmail = '';
-  let userFormName = '';
-  let userFormPassword = '';
-  let userFormRole: UserRole = 'viewer';
-  let userFormIsActive = true;
-  let userFormLoading = false;
-  let userFormError = '';
-  let deleteConfirmUserId: string | null = null;
+  let users = $state<User[]>([]);
+  let usersLoading = $state(false);
+  let usersLoaded = $state(false);
+  let showUserModal = $state(false);
+  let userModalMode = $state<'add' | 'edit'>('add');
+  let editingUser = $state<User | null>(null);
+  let userFormEmail = $state('');
+  let userFormName = $state('');
+  let userFormPassword = $state('');
+  let userFormRole = $state<UserRole>('viewer');
+  let userFormIsActive = $state(true);
+  let userFormLoading = $state(false);
+  let userFormError = $state('');
+  let deleteConfirmUserId = $state<string | null>(null);
 
   const roleOptions: UserRole[] = ['admin', 'operator', 'viewer'];
 
   // Organization state
-  let organization: Organization | null = null;
-  let orgLoading = false;
-  let showOrgModal = false;
-  let orgFormName = '';
-  let orgFormSlug = '';
-  let orgFormLoading = false;
-  let orgFormError = '';
+  let organization = $state<Organization | null>(null);
+  let orgLoading = $state(false);
+  let showOrgModal = $state(false);
+  let orgFormName = $state('');
+  let orgFormSlug = $state('');
+  let orgFormLoading = $state(false);
+  let orgFormError = $state('');
 
-  $: isAdmin = $authStore.user?.role === 'admin';
-  $: currentUserId = $authStore.user?.id;
+  let isAdmin = $derived($authStore.user?.role === 'admin');
+  let currentUserId = $derived($authStore.user?.id);
 
   // Redirect if not admin
-  $: if ($authStore.user && !isAdmin) {
-    goto('/');
-  }
+  $effect(() => {
+    if ($authStore.user && !isAdmin) {
+      goto('/');
+    }
+  });
 
   onMount(async () => {
     await loadProviderMetadata();
@@ -425,9 +427,11 @@
   }
 
   // Load users when switching to that tab
-  $: if (activeTab === 'users' && !usersLoaded && !usersLoading) {
-    loadUsers();
-  }
+  $effect(() => {
+    if (activeTab === 'users' && !usersLoaded && !usersLoading) {
+      loadUsers();
+    }
+  });
 
   // Organization functions
   async function loadOrganization() {
@@ -497,23 +501,27 @@
   }
 
   // Load organization when switching to that tab
-  $: if (activeTab === 'organization' && !organization && !orgLoading) {
-    loadOrganization();
-  }
+  $effect(() => {
+    if (activeTab === 'organization' && !organization && !orgLoading) {
+      loadOrganization();
+    }
+  });
 
   // Pricing tab state
-  let pricingStatus: PricingStatusSummary | null = null;
-  let pricingJobs: PricingJobRun[] = [];
-  let gcpAccounts: GcpAccountOption[] = [];
-  let selectedGcpAccountId = '';
-  let pricingLoading = false;
-  let pricingLoaded = false;
-  let triggerLoading = false;
+  let pricingStatus = $state<PricingStatusSummary | null>(null);
+  let pricingJobs = $state<PricingJobRun[]>([]);
+  let gcpAccounts = $state<GcpAccountOption[]>([]);
+  let selectedGcpAccountId = $state('');
+  let pricingLoading = $state(false);
+  let pricingLoaded = $state(false);
+  let triggerLoading = $state(false);
   let pollInterval: ReturnType<typeof setInterval> | null = null;
 
-  $: if (activeTab === 'pricing' && !pricingLoaded && !pricingLoading) {
-    loadPricingData();
-  }
+  $effect(() => {
+    if (activeTab === 'pricing' && !pricingLoaded && !pricingLoading) {
+      loadPricingData();
+    }
+  });
 
   async function loadPricingData() {
     pricingLoading = true;

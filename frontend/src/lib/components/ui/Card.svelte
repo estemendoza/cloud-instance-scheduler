@@ -1,16 +1,26 @@
 <script lang="ts">
   import clsx from 'clsx';
+  import type { Snippet } from 'svelte';
 
-  export let title = '';
-  export let padding = true;
+  let {
+    title = '',
+    padding = true,
+    class: className,
+    children,
+  }: {
+    title?: string;
+    padding?: boolean;
+    class?: string;
+    children?: Snippet;
+  } = $props();
 
   const baseClasses = 'bg-white rounded-lg shadow';
 
-  $: classes = clsx(
+  const classes = $derived(clsx(
     baseClasses,
     padding && 'p-6',
-    $$props.class
-  );
+    className
+  ));
 </script>
 
 <div class={classes}>
@@ -20,5 +30,5 @@
     </h3>
   {/if}
 
-  <slot />
+  {@render children?.()}
 </div>

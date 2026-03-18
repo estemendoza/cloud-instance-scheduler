@@ -7,12 +7,12 @@
   import Sidebar from '$lib/components/layout/Sidebar.svelte';
   import type { Policy } from '$lib/types/policy';
 
-  let policies: Policy[] = [];
-  let loading = true;
-  let error = '';
-  let togglingId: string | null = null;
+  let policies = $state<Policy[]>([]);
+  let loading = $state(true);
+  let error = $state('');
+  let togglingId = $state<string | null>(null);
 
-  $: isAdmin = $authStore.user?.role === 'admin';
+  let isAdmin = $derived($authStore.user?.role === 'admin');
 
   onMount(async () => {
     await loadPolicies();

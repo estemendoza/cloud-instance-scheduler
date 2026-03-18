@@ -13,15 +13,15 @@
   import type { CloudAccount } from '$lib/types/cloudAccount';
   import type { Policy } from '$lib/types/policy';
 
-  let loading = true;
-  let error = '';
+  let loading = $state(true);
+  let error = $state('');
 
-  let savings: OrganizationSavings | null = null;
-  let summary: ExecutionSummary | null = null;
-  let resources: Resource[] = [];
-  let recentFailures: Execution[] = [];
-  let cloudAccounts: CloudAccount[] = [];
-  let policies: Policy[] = [];
+  let savings = $state<OrganizationSavings | null>(null);
+  let summary = $state<ExecutionSummary | null>(null);
+  let resources = $state<Resource[]>([]);
+  let recentFailures = $state<Execution[]>([]);
+  let cloudAccounts = $state<CloudAccount[]>([]);
+  let policies = $state<Policy[]>([]);
 
   onMount(async () => {
     await loadDashboardData();
@@ -68,21 +68,21 @@
     return `${(rate * 100).toFixed(1)}%`;
   }
 
-  $: hasNoData = !stepAccount || !stepResources || !stepPolicies;
-  $: stepAccount = cloudAccounts.length > 0;
-  $: stepResources = resources.length > 0;
-  $: stepPolicies = policies.length > 0;
-  $: stepSavings = savings !== null && savings.total_monthly_savings > 0;
-  $: steps = [
+  let stepAccount = $derived(cloudAccounts.length > 0);
+  let stepResources = $derived(resources.length > 0);
+  let stepPolicies = $derived(policies.length > 0);
+  let stepSavings = $derived(savings !== null && savings.total_monthly_savings > 0);
+  let steps = $derived([
     { done: stepAccount, label: 'Connect a cloud account (AWS, Azure, or GCP)', href: '/settings' },
     { done: stepResources, label: 'Sync and discover your instances', href: '/settings' },
     { done: stepPolicies, label: 'Create policies to schedule start/stop', href: '/policies/new' },
     { done: stepSavings, label: 'Watch the savings add up', href: '/calculator' },
-  ];
-  $: nextStep = steps.findIndex(s => !s.done);
-  $: runningResources = resources.filter((r) => r.state === 'RUNNING').length;
-  $: stoppedResources = resources.filter((r) => r.state === 'STOPPED').length;
-  $: resourceMap = new Map(resources.map(r => [r.id, r]));
+  ]);
+  let hasNoData = $derived(!stepAccount || !stepResources || !stepPolicies);
+  let nextStep = $derived(steps.findIndex(s => !s.done));
+  let runningResources = $derived(resources.filter((r) => r.state === 'RUNNING').length);
+  let stoppedResources = $derived(resources.filter((r) => r.state === 'STOPPED').length);
+  let resourceMap = $derived(new Map(resources.map(r => [r.id, r])));
 
   function getResourceName(resourceId: string): string {
     const r = resourceMap.get(resourceId);

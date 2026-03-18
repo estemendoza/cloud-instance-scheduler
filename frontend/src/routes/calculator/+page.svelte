@@ -10,42 +10,42 @@
   } from '$lib/types/calculator';
 
   // Tab state
-  let activeTab: 'estimate' | 'compare' | 'schedule' = 'estimate';
+  let activeTab = $state<'estimate' | 'compare' | 'schedule'>('estimate');
 
   // Data
-  let regions: string[] = [];
-  let instanceTypes: InstanceTypeInfo[] = [];
-  let filteredInstanceTypes: InstanceTypeInfo[] = [];
-  let loading = true;
-  let calculating = false;
+  let regions = $state<string[]>([]);
+  let instanceTypes = $state<InstanceTypeInfo[]>([]);
+  let filteredInstanceTypes = $state<InstanceTypeInfo[]>([]);
+  let loading = $state(true);
+  let calculating = $state(false);
 
   // Estimate form
-  let estimateRegion = '';
-  let estimateInstanceType = '';
-  let estimateHoursPerDay = 8;
-  let estimateDaysPerWeek = 5;
-  let estimateResult: EstimateResponse | null = null;
+  let estimateRegion = $state('');
+  let estimateInstanceType = $state('');
+  let estimateHoursPerDay = $state(8);
+  let estimateDaysPerWeek = $state(5);
+  let estimateResult = $state<EstimateResponse | null>(null);
 
   // Compare form
-  let compareInstances: { region: string; instance_type: string }[] = [
+  let compareInstances = $state<{ region: string; instance_type: string }[]>([
     { region: '', instance_type: '' },
     { region: '', instance_type: '' }
-  ];
-  let compareHoursPerDay = 8;
-  let compareDaysPerWeek = 5;
-  let compareResults: EstimateResponse[] = [];
+  ]);
+  let compareHoursPerDay = $state(8);
+  let compareDaysPerWeek = $state(5);
+  let compareResults = $state<EstimateResponse[]>([]);
 
   // Schedule form
-  let scheduleRegion = '';
-  let scheduleInstanceType = '';
-  let schedule: WeeklySchedule = {
+  let scheduleRegion = $state('');
+  let scheduleInstanceType = $state('');
+  let schedule = $state<WeeklySchedule>({
     monday: [{ start: '09:00', end: '18:00' }],
     tuesday: [{ start: '09:00', end: '18:00' }],
     wednesday: [{ start: '09:00', end: '18:00' }],
     thursday: [{ start: '09:00', end: '18:00' }],
     friday: [{ start: '09:00', end: '18:00' }],
-  };
-  let scheduleResult: ScheduleEstimateResponse | null = null;
+  });
+  let scheduleResult = $state<ScheduleEstimateResponse | null>(null);
 
   const DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as const;
   const DAY_LABELS: Record<string, string> = {
@@ -87,7 +87,7 @@
     }
   }
 
-  $: filterInstanceTypes(estimateRegion);
+  $effect(() => { filterInstanceTypes(estimateRegion); });
 
   async function calculateEstimate() {
     if (!estimateRegion || !estimateInstanceType) return;

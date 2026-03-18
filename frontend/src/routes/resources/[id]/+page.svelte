@@ -13,31 +13,31 @@
   import type { Execution } from '$lib/types/execution';
   import type { Override } from '$lib/types/override';
 
-  let loading = true;
-  let error = '';
+  let loading = $state(true);
+  let error = $state('');
 
-  let resource: Resource | null = null;
-  let savings: ResourceSavings | null = null;
-  let timeline: Execution[] = [];
-  let overrides: Override[] = [];
+  let resource = $state<Resource | null>(null);
+  let savings = $state<ResourceSavings | null>(null);
+  let timeline = $state<Execution[]>([]);
+  let overrides = $state<Override[]>([]);
 
   // Override form state
-  let showOverrideForm = false;
-  let overrideDesiredState: 'RUNNING' | 'STOPPED' = 'RUNNING';
-  let overrideExpiresAt = '';
-  let overrideReason = '';
-  let overrideSubmitting = false;
-  let overrideError = '';
+  let showOverrideForm = $state(false);
+  let overrideDesiredState = $state<'RUNNING' | 'STOPPED'>('RUNNING');
+  let overrideExpiresAt = $state('');
+  let overrideReason = $state('');
+  let overrideSubmitting = $state(false);
+  let overrideError = $state('');
 
-  $: canManageOverrides = $authStore.user?.role === 'admin' || $authStore.user?.role === 'operator';
+  let canManageOverrides = $derived($authStore.user?.role === 'admin' || $authStore.user?.role === 'operator');
 
   const PAGE_SIZE = 10;
-  let currentPage = 0;
-  let hasMore = true;
-  let loadingMore = false;
-  let totalExecutions = 0;
+  let currentPage = $state(0);
+  let hasMore = $state(true);
+  let loadingMore = $state(false);
+  let totalExecutions = $state(0);
 
-  $: resourceId = $page.params.id as string;
+  let resourceId = $derived($page.params.id as string);
 
   onMount(async () => {
     await loadResourceData();

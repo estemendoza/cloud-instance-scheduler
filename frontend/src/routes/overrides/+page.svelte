@@ -7,12 +7,12 @@
   import type { Override } from '$lib/types/override';
   import type { Resource } from '$lib/types/resource';
 
-  let loading = true;
-  let error = '';
-  let overrides: Override[] = [];
-  let resourceMap: Map<string, Resource> = new Map();
+  let loading = $state(true);
+  let error = $state('');
+  let overrides = $state<Override[]>([]);
+  let resourceMap = $state<Map<string, Resource>>(new Map());
 
-  $: canManage = $authStore.user?.role === 'admin' || $authStore.user?.role === 'operator';
+  let canManage = $derived($authStore.user?.role === 'admin' || $authStore.user?.role === 'operator');
 
   onMount(async () => {
     await loadOverrides();

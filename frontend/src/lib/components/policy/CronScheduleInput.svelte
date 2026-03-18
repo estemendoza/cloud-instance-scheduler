@@ -2,8 +2,13 @@
   import { createEventDispatcher } from 'svelte';
   import type { CronSchedule } from '$lib/types/policy';
 
-  export let schedule: CronSchedule = { start: '', stop: '' };
-  export let disabled = false;
+  let {
+    schedule = $bindable({ start: '', stop: '' }),
+    disabled = false,
+  }: {
+    schedule?: CronSchedule;
+    disabled?: boolean;
+  } = $props();
 
   const dispatch = createEventDispatcher<{ change: CronSchedule }>();
 
@@ -11,10 +16,10 @@
   let stopExpr = schedule.stop || '';
 
   // Sync from prop
-  $: {
+  $effect(() => {
     startExpr = schedule.start || '';
     stopExpr = schedule.stop || '';
-  }
+  });
 
   // Cron field descriptions
   const CRON_FIELDS = '┌───── minute (0-59)\n│ ┌───── hour (0-23)\n│ │ ┌───── day of month (1-31)\n│ │ │ ┌───── month (1-12)\n│ │ │ │ ┌───── day of week (0-7, Sun=0 or 7)\n│ │ │ │ │\n* * * * *';
@@ -56,8 +61,8 @@
     return parts.length === 5;
   }
 
-  $: startValid = isLikelyValidCron(startExpr);
-  $: stopValid = isLikelyValidCron(stopExpr);
+  const startValid = $derived(isLikelyValidCron(startExpr));
+  const stopValid = $derived(isLikelyValidCron(stopExpr));
 </script>
 
 <div class="space-y-4">

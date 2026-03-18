@@ -8,19 +8,19 @@
   import type { Execution, ExecutionFilter } from '$lib/types/execution';
   import type { Resource } from '$lib/types/resource';
 
-  let loading = true;
-  let error = '';
-  let executions: Execution[] = [];
-  let resources: Resource[] = [];
-  let totalCount = 0;
+  let loading = $state(true);
+  let error = $state('');
+  let executions = $state<Execution[]>([]);
+  let resources = $state<Resource[]>([]);
+  let totalCount = $state(0);
 
   const PAGE_SIZE = 20;
-  let currentPage = 0;
+  let currentPage = $state(0);
 
   // Filter state
-  let statusFilter = '';
-  let actionFilter = '';
-  let hoursFilter = '';
+  let statusFilter = $state('');
+  let actionFilter = $state('');
+  let hoursFilter = $state('');
 
   const statusOptions = [
     { value: 'true', label: 'Success' },
@@ -40,9 +40,9 @@
     { value: '', label: 'All time' }
   ];
 
-  $: resourceMap = new Map(resources.map(r => [r.id, r]));
-  $: hasFilters = statusFilter || actionFilter || hoursFilter;
-  $: totalPages = Math.ceil(totalCount / PAGE_SIZE);
+  let resourceMap = $derived(new Map(resources.map(r => [r.id, r])));
+  let hasFilters = $derived(statusFilter || actionFilter || hoursFilter);
+  let totalPages = $derived(Math.ceil(totalCount / PAGE_SIZE));
 
   onMount(async () => {
     // Read query params for pre-filtering

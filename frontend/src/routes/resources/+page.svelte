@@ -7,21 +7,21 @@
   import type { Resource, ResourceFilter } from '$lib/types/resource';
   import type { Override } from '$lib/types/override';
 
-  let loading = true;
-  let error = '';
-  let resources: Resource[] = [];
-  let overrideMap: Map<string, Override> = new Map();
+  let loading = $state(true);
+  let error = $state('');
+  let resources = $state<Resource[]>([]);
+  let overrideMap = $state<Map<string, Override>>(new Map());
 
   // Pagination state
-  let currentPage = 1;
-  let pageSize = 25;
-  let totalItems = 0;
-  let totalPages = 1;
+  let currentPage = $state(1);
+  let pageSize = $state(25);
+  let totalItems = $state(0);
+  let totalPages = $state(1);
 
   // Filter state
-  let providerFilter = '';
-  let stateFilter = '';
-  let regionFilter = '';
+  let providerFilter = $state('');
+  let stateFilter = $state('');
+  let regionFilter = $state('');
 
   const providerOptions = [
     { value: 'aws', label: 'AWS' },
@@ -114,10 +114,10 @@
     loadResources();
   }
 
-  $: hasFilters = providerFilter || stateFilter || regionFilter;
+  let hasFilters = $derived(providerFilter || stateFilter || regionFilter);
 
-  $: pageStart = totalItems === 0 ? 0 : (currentPage - 1) * pageSize + 1;
-  $: pageEnd = Math.min(currentPage * pageSize, totalItems);
+  let pageStart = $derived(totalItems === 0 ? 0 : (currentPage - 1) * pageSize + 1);
+  let pageEnd = $derived(Math.min(currentPage * pageSize, totalItems));
 
   // Generate visible page numbers with ellipsis
   function getVisiblePages(current: number, total: number): (number | '...')[] {
@@ -138,7 +138,7 @@
     return pages;
   }
 
-  $: visiblePages = getVisiblePages(currentPage, totalPages);
+  let visiblePages = $derived(getVisiblePages(currentPage, totalPages));
 
   function getProviderLabel(type: string | null): string {
     switch (type) {

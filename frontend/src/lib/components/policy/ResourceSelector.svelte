@@ -4,23 +4,28 @@
   import type { ResourceSelector } from '$lib/types/policy';
   import type { Resource } from '$lib/types/resource';
 
-  export let value: ResourceSelector = { tags: {} };
-  export let disabled = false;
+  let {
+    value = $bindable({ tags: {} }),
+    disabled = false,
+  }: {
+    value?: ResourceSelector;
+    disabled?: boolean;
+  } = $props();
 
   const dispatch = createEventDispatcher<{ change: ResourceSelector }>();
 
-  let mode: 'tags' | 'resource_ids' = 'tags' in value ? 'tags' : 'resource_ids';
+  let mode: 'tags' | 'resource_ids' = $state('tags' in value ? 'tags' : 'resource_ids');
 
   // Tag mode state
-  let tags: Array<{ key: string; value: string }> = [];
+  let tags: Array<{ key: string; value: string }> = $state([]);
 
   // Resource IDs mode state
-  let selectedResourceIds: string[] = [];
-  let resources: Resource[] = [];
-  let loadingResources = false;
+  let selectedResourceIds: string[] = $state([]);
+  let resources: Resource[] = $state([]);
+  let loadingResources = $state(false);
 
   // Initialize from value
-  $: initializeFromValue(value);
+  $effect(() => { initializeFromValue(value); });
 
   function initializeFromValue(v: ResourceSelector) {
     if ('tags' in v) {

@@ -1,14 +1,19 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
 
-  export let value = '';
-  export let disabled = false;
+  let {
+    value = $bindable(''),
+    disabled = false,
+  }: {
+    value?: string;
+    disabled?: boolean;
+  } = $props();
 
   const dispatch = createEventDispatcher<{ change: string }>();
 
-  let searchQuery = '';
-  let isOpen = false;
-  let highlightedIndex = 0;
+  let searchQuery = $state('');
+  let isOpen = $state(false);
+  let highlightedIndex = $state(0);
 
   // Common timezones grouped by region
   const TIMEZONES = [
@@ -56,13 +61,15 @@
     'UTC'
   ];
 
-  $: filteredTimezones = searchQuery
+  const filteredTimezones = $derived(searchQuery
     ? TIMEZONES.filter(tz => tz.toLowerCase().includes(searchQuery.toLowerCase()))
-    : TIMEZONES;
+    : TIMEZONES);
 
-  $: if (filteredTimezones.length > 0 && highlightedIndex >= filteredTimezones.length) {
-    highlightedIndex = 0;
-  }
+  $effect(() => {
+    if (filteredTimezones.length > 0 && highlightedIndex >= filteredTimezones.length) {
+      highlightedIndex = 0;
+    }
+  });
 
   function selectTimezone(tz: string) {
     value = tz;
@@ -118,13 +125,13 @@
   }
 </script>
 
-<div class="timezone-select relative" on:focusout={handleBlur}>
+<div class="timezone-select relative" onfocusout={handleBlur}>
   <!-- Trigger Button -->
   <button
     type="button"
     class="w-full px-3 py-2 bg-slate-900 border border-slate-600 rounded text-left text-sm text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed"
-    on:click={() => !disabled && (isOpen = !isOpen)}
-    on:keydown={handleKeydown}
+    onclick={() => !disabled && (isOpen = !isOpen)}
+    onkeydown={handleKeydown}
     {disabled}
     aria-expanded={isOpen}
     aria-haspopup="listbox"
@@ -152,7 +159,7 @@
           bind:value={searchQuery}
           placeholder="Search timezones..."
           class="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-600 rounded text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
-          on:keydown={handleKeydown}
+          onkeydown={handleKeydown}
         />
       </div>
 
@@ -169,8 +176,8 @@
               role="option"
               aria-selected={tz === value}
               class="px-3 py-2 text-sm cursor-pointer transition-colors {tz === value ? 'bg-emerald-600/20 text-emerald-400' : index === highlightedIndex ? 'bg-slate-700 text-slate-100' : 'text-slate-300 hover:bg-slate-700'}"
-              on:mousedown|preventDefault={() => selectTimezone(tz)}
-              on:mouseenter={() => highlightedIndex = index}
+              onmousedown={(e) => { e.preventDefault(); selectTimezone(tz); }}
+              onmouseenter={() => highlightedIndex = index}
             >
               <span class="font-mono text-xs">{formatTimezone(tz)}</span>
             </li>
