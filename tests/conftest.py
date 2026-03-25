@@ -9,7 +9,13 @@ from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
 
+import bcrypt as _bcrypt
 import pytest
+
+# Use minimum bcrypt rounds in tests — same code paths, ~30x faster hashing.
+# Default rounds=12 adds ~0.3-0.5s per hash; rounds=4 is the minimum allowed.
+_real_gensalt = _bcrypt.gensalt
+_bcrypt.gensalt = lambda rounds=4, prefix=b'2b': _real_gensalt(rounds=4, prefix=prefix)
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
