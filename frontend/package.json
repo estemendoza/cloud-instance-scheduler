@@ -10,6 +10,11 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint ."
   },
+  "overrides": {
+    "svelte-sonner": {
+      "svelte": "^5.0.0"
+    }
+  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@sveltejs/adapter-static": "^3.0.1",
