@@ -20,7 +20,7 @@
     fullWidth?: boolean;
     class?: string;
     children?: Snippet;
-    onclick?: (e: MouseEvent) => void;
+    onclick?: (_e: MouseEvent) => void;
     [key: string]: any;
   } = $props();
 
@@ -53,6 +53,7 @@
   {disabled}
   class={classes}
   {onclick}
+  {...rest}
 >
   {@render children?.()}
 </button>

@@ -11,7 +11,7 @@
   }: {
     value?: ResourceSelector;
     disabled?: boolean;
-    onchange?: (value: ResourceSelector) => void;
+    onchange?: (_value: ResourceSelector) => void;
   } = $props();
 
   let mode: 'tags' | 'resource_ids' = $state('tags' in value ? 'tags' : 'resource_ids');

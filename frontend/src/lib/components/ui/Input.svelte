@@ -24,9 +24,9 @@
     error?: string;
     id?: string;
     class?: string;
-    oninput?: (e: Event) => void;
-    onchange?: (e: Event) => void;
-    onblur?: (e: FocusEvent) => void;
+    oninput?: (_e: Event) => void;
+    onchange?: (_e: Event) => void;
+    onblur?: (_e: FocusEvent) => void;
   } = $props();
 
   const baseClasses = 'block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm disabled:bg-gray-100 disabled:cursor-not-allowed';

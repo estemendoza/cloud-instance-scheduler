@@ -8,7 +8,7 @@
   }: {
     schedule?: CronSchedule;
     disabled?: boolean;
-    onchange?: (value: CronSchedule) => void;
+    onchange?: (_value: CronSchedule) => void;
   } = $props();
 
   let startExpr = schedule.start || '';

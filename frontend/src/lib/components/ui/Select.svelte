@@ -23,7 +23,7 @@
     id?: string;
     disabled?: boolean;
     class?: string;
-    onchange?: (e: Event) => void;
+    onchange?: (_e: Event) => void;
   } = $props();
 
   const baseClasses =

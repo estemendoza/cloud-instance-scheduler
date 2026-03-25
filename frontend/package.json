@@ -11,7 +11,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@eslint/js": "^9.20.0",
+    "@eslint/js": "^10.0.1",
     "@sveltejs/adapter-static": "^3.0.1",
     "@sveltejs/kit": "^2.55.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.4",
@@ -19,9 +19,9 @@
     "@types/node": "^20.11.19",
     "@types/qrcode": "^1.5.6",
     "autoprefixer": "^10.4.17",
-    "eslint": "^9.20.0",
-    "eslint-plugin-svelte": "^2.46.0",
-    "globals": "^15.14.0",
+    "eslint": "^10.1.0",
+    "eslint-plugin-svelte": "^3.16.0",
+    "globals": "^17.4.0",
     "postcss": "^8.4.35",
     "prettier": "^3.1.1",
     "prettier-plugin-svelte": "^3.1.2",

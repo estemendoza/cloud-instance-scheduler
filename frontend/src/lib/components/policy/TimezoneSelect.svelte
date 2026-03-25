@@ -6,7 +6,7 @@
   }: {
     value?: string;
     disabled?: boolean;
-    onchange?: (value: string) => void;
+    onchange?: (_value: string) => void;
   } = $props();
 
   let searchQuery = $state('');

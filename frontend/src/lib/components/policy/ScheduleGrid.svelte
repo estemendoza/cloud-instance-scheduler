@@ -8,7 +8,7 @@
   }: {
     schedule?: WeeklySchedule;
     disabled?: boolean;
-    onchange?: (value: WeeklySchedule) => void;
+    onchange?: (_value: WeeklySchedule) => void;
   } = $props();
 
   // Grid state: 7 days × 24 hours
