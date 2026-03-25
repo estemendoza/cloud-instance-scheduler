@@ -551,6 +551,9 @@
     try {
       const result = await pricingJobsAPI.trigger(providerType, selectedGcpAccountId || undefined);
       notify.success(result.message);
+      // Immediately reload so the button shows "Running..." and history shows new jobs
+      pricingLoaded = false;
+      await loadPricingData();
       startPolling(result.job_ids);
     } catch (err: any) {
       notify.error(err.message || 'Failed to trigger pricing update');
@@ -564,6 +567,11 @@
     pollInterval = setInterval(async () => {
       try {
         const jobs = await Promise.all(jobIds.map(id => pricingJobsAPI.get(id)));
+        // Update running jobs in the list on every tick
+        pricingJobs = pricingJobs.map(j => {
+          const updated = jobs.find(u => u.id === j.id);
+          return updated ?? j;
+        });
         const allDone = jobs.every(j => j.status === 'completed' || j.status === 'failed');
         if (allDone) {
           if (pollInterval) clearInterval(pollInterval);
@@ -644,7 +652,7 @@
               ? 'text-emerald-500 border-emerald-500'
               : 'text-slate-400 border-transparent hover:text-slate-200 hover:border-slate-600'}"
           >
-            <svelte:component this={tab.icon} size={16} stroke={1.5} />
+            <tab.icon size={16} stroke={1.5} />
             {tab.label}
           </button>
         {/each}

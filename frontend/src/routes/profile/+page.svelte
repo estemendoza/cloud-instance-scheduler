@@ -300,7 +300,7 @@
               ? 'text-emerald-500 border-emerald-500'
               : 'text-slate-400 border-transparent hover:text-slate-200 hover:border-slate-600'}"
           >
-            <svelte:component this={tab.icon} size={16} stroke={1.5} />
+            <tab.icon size={16} stroke={1.5} />
             {tab.label}
           </button>
         {/each}

@@ -100,7 +100,7 @@
     role="button"
     tabindex="0"
     aria-label="Close menu"
-  />
+  ></div>
 {/if}
 
 <!-- Sidebar -->
@@ -152,7 +152,7 @@
               : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
           )}
         >
-          <svelte:component this={item.icon} size={18} stroke={1.5} />
+          <item.icon size={18} stroke={1.5} />
           {item.label}
         </a>
       {/if}
