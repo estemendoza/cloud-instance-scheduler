@@ -1,11 +1,19 @@
 <script lang="ts">
   import clsx from 'clsx';
 
-  export let title: string;
-  export let value: string | number;
-  export let subtitle: string = '';
-  export let trend: 'up' | 'down' | 'neutral' | null = null;
-  export let loading: boolean = false;
+  let {
+    title,
+    value,
+    subtitle = '',
+    trend = null,
+    loading = false,
+  }: {
+    title: string;
+    value: string | number;
+    subtitle?: string;
+    trend?: 'up' | 'down' | 'neutral' | null;
+    loading?: boolean;
+  } = $props();
 
   const trendColors = {
     up: 'text-green-600',

@@ -1,8 +1,18 @@
 <script lang="ts">
   import clsx from 'clsx';
+  import type { Snippet } from 'svelte';
 
-  export let variant: 'success' | 'warning' | 'danger' | 'info' | 'neutral' = 'neutral';
-  export let size: 'sm' | 'md' = 'md';
+  let {
+    variant = 'neutral',
+    size = 'md',
+    class: className,
+    children,
+  }: {
+    variant?: 'success' | 'warning' | 'danger' | 'info' | 'neutral';
+    size?: 'sm' | 'md';
+    class?: string;
+    children?: Snippet;
+  } = $props();
 
   const baseClasses = 'inline-flex items-center font-medium rounded-full';
 
@@ -19,14 +29,14 @@
     md: 'px-2.5 py-0.5 text-sm'
   };
 
-  $: classes = clsx(
+  const classes = $derived(clsx(
     baseClasses,
     variantClasses[variant],
     sizeClasses[size],
-    $$props.class
-  );
+    className
+  ));
 </script>
 
 <span class={classes}>
-  <slot />
+  {@render children?.()}
 </span>

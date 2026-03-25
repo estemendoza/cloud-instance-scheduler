@@ -7,21 +7,21 @@
   import type { Resource, ResourceFilter } from '$lib/types/resource';
   import type { Override } from '$lib/types/override';
 
-  let loading = true;
-  let error = '';
-  let resources: Resource[] = [];
-  let overrideMap: Map<string, Override> = new Map();
+  let loading = $state(true);
+  let error = $state('');
+  let resources = $state<Resource[]>([]);
+  let overrideMap = $state<Map<string, Override>>(new Map());
 
   // Pagination state
-  let currentPage = 1;
-  let pageSize = 25;
-  let totalItems = 0;
-  let totalPages = 1;
+  let currentPage = $state(1);
+  let pageSize = $state(25);
+  let totalItems = $state(0);
+  let totalPages = $state(1);
 
   // Filter state
-  let providerFilter = '';
-  let stateFilter = '';
-  let regionFilter = '';
+  let providerFilter = $state('');
+  let stateFilter = $state('');
+  let regionFilter = $state('');
 
   const providerOptions = [
     { value: 'aws', label: 'AWS' },
@@ -114,10 +114,10 @@
     loadResources();
   }
 
-  $: hasFilters = providerFilter || stateFilter || regionFilter;
+  let hasFilters = $derived(providerFilter || stateFilter || regionFilter);
 
-  $: pageStart = totalItems === 0 ? 0 : (currentPage - 1) * pageSize + 1;
-  $: pageEnd = Math.min(currentPage * pageSize, totalItems);
+  let pageStart = $derived(totalItems === 0 ? 0 : (currentPage - 1) * pageSize + 1);
+  let pageEnd = $derived(Math.min(currentPage * pageSize, totalItems));
 
   // Generate visible page numbers with ellipsis
   function getVisiblePages(current: number, total: number): (number | '...')[] {
@@ -138,7 +138,7 @@
     return pages;
   }
 
-  $: visiblePages = getVisiblePages(currentPage, totalPages);
+  let visiblePages = $derived(getVisiblePages(currentPage, totalPages));
 
   function getProviderLabel(type: string | null): string {
     switch (type) {
@@ -177,7 +177,7 @@
           </p>
         </div>
         <button
-          on:click={loadResources}
+          onclick={loadResources}
           disabled={loading}
           class="px-3 py-1.5 text-sm text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors disabled:opacity-50"
         >
@@ -241,14 +241,14 @@
 
           <div class="flex gap-2">
             <button
-              on:click={applyFilters}
+              onclick={applyFilters}
               class="px-4 py-2 text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white rounded transition-colors"
             >
               Apply
             </button>
             {#if hasFilters}
               <button
-                on:click={clearFilters}
+                onclick={clearFilters}
                 class="px-4 py-2 text-sm text-slate-400 hover:text-slate-200 bg-slate-700 hover:bg-slate-600 rounded transition-colors"
               >
                 Clear
@@ -306,8 +306,8 @@
                 {#each resources as resource}
                   <tr
                     class="hover:bg-slate-700/50 cursor-pointer transition-colors"
-                    on:click={() => handleRowClick(resource)}
-                    on:keypress={(e) => e.key === 'Enter' && handleRowClick(resource)}
+                    onclick={() => handleRowClick(resource)}
+                    onkeypress={(e) => e.key === 'Enter' && handleRowClick(resource)}
                     tabindex="0"
                     role="button"
                   >
@@ -374,7 +374,7 @@
                 <select
                   id="page-size"
                   value={pageSize}
-                  on:change={(e) => changePageSize(Number(e.currentTarget.value))}
+                  onchange={(e) => changePageSize(Number((e.target as HTMLSelectElement).value))}
                   class="bg-slate-900 border border-slate-700 text-slate-300 text-sm rounded px-2 py-1 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 >
                   {#each pageSizeOptions as size}
@@ -388,7 +388,7 @@
             <div class="flex items-center gap-1">
               <!-- Previous -->
               <button
-                on:click={() => goToPage(currentPage - 1)}
+                onclick={() => goToPage(currentPage - 1)}
                 disabled={currentPage <= 1}
                 class="px-2 py-1 text-sm text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-slate-800 disabled:hover:text-slate-400"
                 aria-label="Previous page"
@@ -404,7 +404,7 @@
                   <span class="px-2 py-1 text-sm text-slate-600">...</span>
                 {:else}
                   <button
-                    on:click={() => goToPage(pageNum)}
+                    onclick={() => goToPage(pageNum)}
                     class="px-2.5 py-1 text-sm rounded border transition-colors {pageNum === currentPage
                       ? 'bg-emerald-600 border-emerald-500 text-white'
                       : 'text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border-slate-700'}"
@@ -416,7 +416,7 @@
 
               <!-- Next -->
               <button
-                on:click={() => goToPage(currentPage + 1)}
+                onclick={() => goToPage(currentPage + 1)}
                 disabled={currentPage >= totalPages}
                 class="px-2 py-1 text-sm text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-slate-800 disabled:hover:text-slate-400"
                 aria-label="Next page"

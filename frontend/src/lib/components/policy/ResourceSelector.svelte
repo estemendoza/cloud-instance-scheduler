@@ -1,26 +1,31 @@
 <script lang="ts">
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { onMount } from 'svelte';
   import { resourcesAPI } from '$lib/api/endpoints/resources';
   import type { ResourceSelector } from '$lib/types/policy';
   import type { Resource } from '$lib/types/resource';
 
-  export let value: ResourceSelector = { tags: {} };
-  export let disabled = false;
+  let {
+    value = $bindable({ tags: {} }),
+    disabled = false,
+    onchange,
+  }: {
+    value?: ResourceSelector;
+    disabled?: boolean;
+    onchange?: (_value: ResourceSelector) => void;
+  } = $props();
 
-  const dispatch = createEventDispatcher<{ change: ResourceSelector }>();
-
-  let mode: 'tags' | 'resource_ids' = 'tags' in value ? 'tags' : 'resource_ids';
+  let mode: 'tags' | 'resource_ids' = $state('tags' in value ? 'tags' : 'resource_ids');
 
   // Tag mode state
-  let tags: Array<{ key: string; value: string }> = [];
+  let tags: Array<{ key: string; value: string }> = $state([]);
 
   // Resource IDs mode state
-  let selectedResourceIds: string[] = [];
-  let resources: Resource[] = [];
-  let loadingResources = false;
+  let selectedResourceIds: string[] = $state([]);
+  let resources: Resource[] = $state([]);
+  let loadingResources = $state(false);
 
   // Initialize from value
-  $: initializeFromValue(value);
+  $effect(() => { initializeFromValue(value); });
 
   function initializeFromValue(v: ResourceSelector) {
     if ('tags' in v) {
@@ -101,7 +106,7 @@
       newValue = { resource_ids: selectedResourceIds };
     }
 
-    dispatch('change', newValue);
+    onchange?.(newValue);
   }
 </script>
 
@@ -113,7 +118,7 @@
         type="radio"
         bind:group={mode}
         value="tags"
-        on:change={handleModeChange}
+        onchange={handleModeChange}
         {disabled}
         class="w-4 h-4 text-emerald-600 bg-slate-900 border-slate-600 focus:ring-emerald-500 focus:ring-offset-slate-800"
       />
@@ -124,7 +129,7 @@
         type="radio"
         bind:group={mode}
         value="resource_ids"
-        on:change={handleModeChange}
+        onchange={handleModeChange}
         {disabled}
         class="w-4 h-4 text-emerald-600 bg-slate-900 border-slate-600 focus:ring-emerald-500 focus:ring-offset-slate-800"
       />
@@ -142,7 +147,7 @@
           <input
             type="text"
             bind:value={tag.key}
-            on:input={handleTagChange}
+            oninput={handleTagChange}
             placeholder="Tag key"
             {disabled}
             class="flex-1 px-3 py-2 bg-slate-900 border border-slate-600 rounded text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 disabled:opacity-50"
@@ -151,14 +156,14 @@
           <input
             type="text"
             bind:value={tag.value}
-            on:input={handleTagChange}
+            oninput={handleTagChange}
             placeholder="Tag value"
             {disabled}
             class="flex-1 px-3 py-2 bg-slate-900 border border-slate-600 rounded text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 disabled:opacity-50"
           />
           <button
             type="button"
-            on:click={() => removeTag(index)}
+            onclick={() => removeTag(index)}
             {disabled}
             class="p-2 text-slate-500 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed"
             aria-label="Remove tag"
@@ -173,7 +178,7 @@
       {#if !disabled}
         <button
           type="button"
-          on:click={addTag}
+          onclick={addTag}
           class="flex items-center gap-1 text-sm text-emerald-500 hover:text-emerald-400"
         >
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -207,7 +212,7 @@
               <input
                 type="checkbox"
                 checked={selectedResourceIds.includes(resource.id)}
-                on:change={() => toggleResource(resource.id)}
+                onchange={() => toggleResource(resource.id)}
                 {disabled}
                 class="w-4 h-4 text-emerald-600 bg-slate-900 border-slate-600 rounded focus:ring-emerald-500 focus:ring-offset-slate-800"
               />

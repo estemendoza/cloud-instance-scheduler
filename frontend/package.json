@@ -10,22 +10,27 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint ."
   },
+  "overrides": {
+    "svelte-sonner": {
+      "svelte": "^5.0.0"
+    }
+  },
   "devDependencies": {
-    "@eslint/js": "^9.20.0",
+    "@eslint/js": "^10.0.1",
     "@sveltejs/adapter-static": "^3.0.1",
     "@sveltejs/kit": "^2.55.0",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.4",
     "@tailwindcss/forms": "^0.5.7",
     "@types/node": "^20.11.19",
     "@types/qrcode": "^1.5.6",
     "autoprefixer": "^10.4.17",
-    "eslint": "^9.20.0",
-    "eslint-plugin-svelte": "^2.46.0",
-    "globals": "^15.14.0",
+    "eslint": "^10.1.0",
+    "eslint-plugin-svelte": "^3.16.0",
+    "globals": "^17.4.0",
     "postcss": "^8.4.35",
     "prettier": "^3.1.1",
     "prettier-plugin-svelte": "^3.1.2",
-    "svelte": "^4.2.7",
+    "svelte": "^5.54.0",
     "svelte-check": "^4.4.5",
     "tailwindcss": "^3.4.1",
     "tslib": "^2.4.1",
@@ -42,6 +47,6 @@
     "date-fns-tz": "^2.0.0",
     "qrcode": "^1.5.4",
     "svelte-apexcharts": "^1.0.2",
-    "svelte-french-toast": "^1.2.0"
+    "svelte-sonner": "^1.1.0"
   }
 }

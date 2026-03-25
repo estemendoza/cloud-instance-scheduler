@@ -6,12 +6,25 @@
     label: string;
   }
 
-  export let options: Option[] = [];
-  export let value: string = '';
-  export let placeholder: string = 'Select...';
-  export let label: string = '';
-  export let id: string = '';
-  export let disabled: boolean = false;
+  let {
+    options = [],
+    value = $bindable(''),
+    placeholder = 'Select...',
+    label = '',
+    id = '',
+    disabled = false,
+    class: className,
+    onchange,
+  }: {
+    options?: Option[];
+    value?: string;
+    placeholder?: string;
+    label?: string;
+    id?: string;
+    disabled?: boolean;
+    class?: string;
+    onchange?: (_e: Event) => void;
+  } = $props();
 
   const baseClasses =
     'block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm disabled:bg-gray-100 disabled:cursor-not-allowed';
@@ -24,7 +37,7 @@
     </label>
   {/if}
 
-  <select {id} bind:value {disabled} class={clsx(baseClasses, $$props.class)} on:change>
+  <select {id} bind:value {disabled} class={clsx(baseClasses, className)} {onchange}>
     <option value="">{placeholder}</option>
     {#each options as option}
       <option value={option.value}>{option.label}</option>

@@ -1,22 +1,41 @@
 <script lang="ts">
   import clsx from 'clsx';
 
-  export let type: 'text' | 'email' | 'password' | 'number' = 'text';
-  export let value: string | number = '';
-  export let placeholder = '';
-  export let disabled = false;
-  export let required = false;
-  export let label = '';
-  export let error = '';
-  export let id = '';
+  let {
+    type = 'text',
+    value = $bindable(''),
+    placeholder = '',
+    disabled = false,
+    required = false,
+    label = '',
+    error = '',
+    id = '',
+    class: className,
+    oninput,
+    onchange,
+    onblur,
+  }: {
+    type?: 'text' | 'email' | 'password' | 'number';
+    value?: string | number;
+    placeholder?: string;
+    disabled?: boolean;
+    required?: boolean;
+    label?: string;
+    error?: string;
+    id?: string;
+    class?: string;
+    oninput?: (_e: Event) => void;
+    onchange?: (_e: Event) => void;
+    onblur?: (_e: FocusEvent) => void;
+  } = $props();
 
   const baseClasses = 'block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm disabled:bg-gray-100 disabled:cursor-not-allowed';
 
-  $: inputClasses = clsx(
+  const inputClasses = $derived(clsx(
     baseClasses,
     error ? 'border-red-300' : 'border-gray-300',
-    $$props.class
-  );
+    className
+  ));
 </script>
 
 <div class="w-full">
@@ -38,9 +57,9 @@
       {required}
       bind:value
       class={inputClasses}
-      on:input
-      on:change
-      on:blur
+      {oninput}
+      {onchange}
+      {onblur}
     />
   {:else if type === 'email'}
     <input
@@ -51,9 +70,9 @@
       {required}
       bind:value
       class={inputClasses}
-      on:input
-      on:change
-      on:blur
+      {oninput}
+      {onchange}
+      {onblur}
     />
   {:else if type === 'password'}
     <input
@@ -64,9 +83,9 @@
       {required}
       bind:value
       class={inputClasses}
-      on:input
-      on:change
-      on:blur
+      {oninput}
+      {onchange}
+      {onblur}
     />
   {:else}
     <input
@@ -77,9 +96,9 @@
       {required}
       bind:value
       class={inputClasses}
-      on:input
-      on:change
-      on:blur
+      {oninput}
+      {onchange}
+      {onblur}
     />
   {/if}
 

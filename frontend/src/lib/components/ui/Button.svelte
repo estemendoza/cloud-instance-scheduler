@@ -1,11 +1,28 @@
 <script lang="ts">
   import clsx from 'clsx';
+  import type { Snippet } from 'svelte';
 
-  export let variant: 'primary' | 'secondary' | 'danger' | 'ghost' = 'primary';
-  export let size: 'sm' | 'md' | 'lg' = 'md';
-  export let disabled = false;
-  export let type: 'button' | 'submit' | 'reset' = 'button';
-  export let fullWidth = false;
+  let {
+    variant = 'primary',
+    size = 'md',
+    disabled = false,
+    type = 'button',
+    fullWidth = false,
+    class: className,
+    children,
+    onclick,
+    ...rest
+  }: {
+    variant?: 'primary' | 'secondary' | 'danger' | 'ghost';
+    size?: 'sm' | 'md' | 'lg';
+    disabled?: boolean;
+    type?: 'button' | 'submit' | 'reset';
+    fullWidth?: boolean;
+    class?: string;
+    children?: Snippet;
+    onclick?: (_e: MouseEvent) => void;
+    [key: string]: any;
+  } = $props();
 
   const baseClasses = 'inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
@@ -22,20 +39,21 @@
     lg: 'px-6 py-3 text-lg'
   };
 
-  $: classes = clsx(
+  const classes = $derived(clsx(
     baseClasses,
     variantClasses[variant],
     sizeClasses[size],
     fullWidth && 'w-full',
-    $$props.class
-  );
+    className
+  ));
 </script>
 
 <button
   {type}
   {disabled}
   class={classes}
-  on:click
+  {onclick}
+  {...rest}
 >
-  <slot />
+  {@render children?.()}
 </button>

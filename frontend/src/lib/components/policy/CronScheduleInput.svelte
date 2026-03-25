@@ -1,20 +1,24 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import type { CronSchedule } from '$lib/types/policy';
 
-  export let schedule: CronSchedule = { start: '', stop: '' };
-  export let disabled = false;
-
-  const dispatch = createEventDispatcher<{ change: CronSchedule }>();
+  let {
+    schedule = $bindable({ start: '', stop: '' }),
+    disabled = false,
+    onchange,
+  }: {
+    schedule?: CronSchedule;
+    disabled?: boolean;
+    onchange?: (_value: CronSchedule) => void;
+  } = $props();
 
   let startExpr = schedule.start || '';
   let stopExpr = schedule.stop || '';
 
   // Sync from prop
-  $: {
+  $effect(() => {
     startExpr = schedule.start || '';
     stopExpr = schedule.stop || '';
-  }
+  });
 
   // Cron field descriptions
   const CRON_FIELDS = '┌───── minute (0-59)\n│ ┌───── hour (0-23)\n│ │ ┌───── day of month (1-31)\n│ │ │ ┌───── month (1-12)\n│ │ │ │ ┌───── day of week (0-7, Sun=0 or 7)\n│ │ │ │ │\n* * * * *';
@@ -42,7 +46,7 @@
 
   function emitChange() {
     const newSchedule: CronSchedule = { start: startExpr.trim(), stop: stopExpr.trim() };
-    dispatch('change', newSchedule);
+    onchange?.(newSchedule);
   }
 
   function handleInput() {
@@ -56,8 +60,8 @@
     return parts.length === 5;
   }
 
-  $: startValid = isLikelyValidCron(startExpr);
-  $: stopValid = isLikelyValidCron(stopExpr);
+  const startValid = $derived(isLikelyValidCron(startExpr));
+  const stopValid = $derived(isLikelyValidCron(stopExpr));
 </script>
 
 <div class="space-y-4">
@@ -68,7 +72,7 @@
       {#each PRESETS as preset}
         <button
           type="button"
-          on:click={() => applyPreset(preset)}
+          onclick={() => applyPreset(preset)}
           class="px-2 py-1 text-xs text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors"
           title={preset.description}
         >
@@ -92,7 +96,7 @@
       <input
         type="text"
         bind:value={startExpr}
-        on:input={handleInput}
+        oninput={handleInput}
         placeholder="0 9 * * 1-5"
         {disabled}
         class="flex-1 px-3 py-2 bg-slate-900 border rounded text-sm font-mono text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 {startExpr && !startValid ? 'border-red-500' : 'border-slate-600'}"
@@ -114,7 +118,7 @@
       <input
         type="text"
         bind:value={stopExpr}
-        on:input={handleInput}
+        oninput={handleInput}
         placeholder="0 18 * * 1-5"
         {disabled}
         class="flex-1 px-3 py-2 bg-slate-900 border rounded text-sm font-mono text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 {stopExpr && !stopValid ? 'border-red-500' : 'border-slate-600'}"

@@ -1,4 +1,4 @@
-import toast from 'svelte-french-toast';
+import { toast } from 'svelte-sonner';
 
 export const notify = {
   success: (message: string) => {
@@ -10,9 +10,7 @@ export const notify = {
   },
 
   info: (message: string) => {
-    toast(message, {
-      icon: 'ℹ️'
-    });
+    toast.info(message);
   },
 
   promise: <T>(

@@ -7,28 +7,30 @@
   import LogoOrbit from '$lib/components/ui/LogoOrbit.svelte';
   import type { Organization } from '$lib/types/organization';
 
-  let step = 1;
-  let loading = false;
-  let error = '';
+  let step = $state(1);
+  let loading = $state(false);
+  let error = $state('');
 
   // Step 1: Organization
-  let orgName = '';
-  let orgSlug = '';
-  let createdOrg: Organization | null = null;
+  let orgName = $state('');
+  let orgSlug = $state('');
+  let createdOrg = $state<Organization | null>(null);
 
   // Step 2: User
-  let userEmail = '';
-  let userPassword = '';
-  let userFullName = '';
-  let createdUserId = '';
+  let userEmail = $state('');
+  let userPassword = $state('');
+  let userFullName = $state('');
+  let createdUserId = $state('');
 
   // Auto-generate slug from name
-  $: if (orgName) {
-    orgSlug = orgName
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-  }
+  $effect(() => {
+    if (orgName) {
+      orgSlug = orgName
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+  });
 
   async function createOrganization() {
     error = '';
@@ -152,7 +154,7 @@
             Create Organization
           </h2>
 
-          <form on:submit|preventDefault={createOrganization}>
+          <form onsubmit={(e) => { e.preventDefault(); createOrganization(); }}>
             <div class="space-y-4">
               <div>
                 <label for="org-name" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">
@@ -204,7 +206,7 @@
             Create Admin User
           </h2>
 
-          <form on:submit|preventDefault={createUser}>
+          <form onsubmit={(e) => { e.preventDefault(); createUser(); }}>
             <div class="space-y-4">
               <div>
                 <label for="user-email" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">
@@ -294,7 +296,7 @@
           </p>
 
           <button
-            on:click={completeSetup}
+            onclick={completeSetup}
             disabled={loading}
             class="w-full px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 text-white text-sm font-medium rounded transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-800 disabled:cursor-not-allowed"
           >

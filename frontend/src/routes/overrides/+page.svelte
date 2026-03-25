@@ -7,12 +7,12 @@
   import type { Override } from '$lib/types/override';
   import type { Resource } from '$lib/types/resource';
 
-  let loading = true;
-  let error = '';
-  let overrides: Override[] = [];
-  let resourceMap: Map<string, Resource> = new Map();
+  let loading = $state(true);
+  let error = $state('');
+  let overrides = $state<Override[]>([]);
+  let resourceMap = $state<Map<string, Resource>>(new Map());
 
-  $: canManage = $authStore.user?.role === 'admin' || $authStore.user?.role === 'operator';
+  let canManage = $derived($authStore.user?.role === 'admin' || $authStore.user?.role === 'operator');
 
   onMount(async () => {
     await loadOverrides();
@@ -88,7 +88,7 @@
           </p>
         </div>
         <button
-          on:click={loadOverrides}
+          onclick={loadOverrides}
           disabled={loading}
           class="px-3 py-1.5 text-sm text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded transition-colors disabled:opacity-50"
         >
@@ -189,7 +189,7 @@
                     {#if canManage}
                       <td class="px-4 py-3">
                         <button
-                          on:click={() => cancelOverride(override.id)}
+                          onclick={() => cancelOverride(override.id)}
                           class="text-xs text-red-400 hover:text-red-300 transition-colors"
                         >
                           Cancel

@@ -79,7 +79,7 @@
     <span class="text-sm font-semibold text-slate-100">CIS</span>
   </div>
   <button
-    on:click={toggleSidebar}
+    onclick={toggleSidebar}
     class="p-2 text-slate-400 hover:text-slate-200 hover:bg-slate-800 rounded transition-colors"
     aria-label="Toggle menu"
   >
@@ -95,12 +95,12 @@
 {#if isOpen}
   <div
     class="lg:hidden fixed inset-0 z-40 bg-black/50"
-    on:click={closeSidebar}
-    on:keypress={(e) => e.key === 'Escape' && closeSidebar()}
+    onclick={closeSidebar}
+    onkeypress={(e) => e.key === 'Escape' && closeSidebar()}
     role="button"
     tabindex="0"
     aria-label="Close menu"
-  />
+  ></div>
 {/if}
 
 <!-- Sidebar -->
@@ -130,7 +130,7 @@
   <div class="lg:hidden p-4 border-b border-slate-800 flex items-center justify-between">
     <span class="text-sm font-medium text-slate-400">Menu</span>
     <button
-      on:click={closeSidebar}
+      onclick={closeSidebar}
       class="p-1 text-slate-400 hover:text-slate-200"
       aria-label="Close menu"
     >
@@ -144,7 +144,7 @@
       {#if !item.adminOnly || isAdmin}
         <a
           href={item.href}
-          on:click={closeSidebar}
+          onclick={closeSidebar}
           class={clsx(
             'flex items-center gap-3 px-3 py-2 rounded text-sm font-medium transition-colors',
             isActive(item.href)
@@ -152,7 +152,7 @@
               : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
           )}
         >
-          <svelte:component this={item.icon} size={18} stroke={1.5} />
+          <item.icon size={18} stroke={1.5} />
           {item.label}
         </a>
       {/if}
@@ -164,7 +164,7 @@
     {#if $authStore.user}
       <a
         href="/profile"
-        on:click={closeSidebar}
+        onclick={closeSidebar}
         class="flex items-center gap-2.5 mb-3 px-2 py-1.5 rounded hover:bg-slate-800/50 transition-colors group"
       >
         <div
@@ -188,7 +188,7 @@
     {/if}
 
     <button
-      on:click={handleLogout}
+      onclick={handleLogout}
       class="w-full flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-400 hover:text-red-400 hover:bg-red-900/20 rounded transition-colors"
     >
       <IconLogout size={18} stroke={1.5} />

@@ -2,13 +2,16 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
-  import { Toaster } from 'svelte-french-toast';
+  import { Toaster } from 'svelte-sonner';
   import { authStore } from '$lib/stores/auth';
   import { systemStore } from '$lib/stores/system';
   import { systemAPI } from '$lib/api/endpoints/system';
+  import type { Snippet } from 'svelte';
   import '../app.css';
 
-  let loading = true;
+  let { children }: { children: Snippet } = $props();
+
+  let loading = $state(true);
 
   // Public routes that don't require authentication
   const publicRoutes = ['/bootstrap', '/login'];
@@ -62,10 +65,8 @@
 <!-- Toast notifications -->
 <Toaster
   position="top-right"
-  toastOptions={{
-    duration: 4000,
-    style: 'background: #1e293b; color: #e2e8f0; border: 1px solid #334155;'
-  }}
+  duration={4000}
+  theme="dark"
 />
 
 {#if loading}
@@ -76,5 +77,5 @@
     </div>
   </div>
 {:else}
-  <slot />
+  {@render children()}
 {/if}
